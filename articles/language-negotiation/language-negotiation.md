@@ -41,7 +41,7 @@ A [locale](https://www.w3.org/TR/i18n-glossary/#dfn-locale) is:
 
 Developers pass the locale (or set it in the operating environment) when calling 
 internationalized APIs used for operations such as loading the localized resources mentioned above.
-But they are also use APIs that make the content or data in a system appear or
+But they are also used in APIs that make the content or data in a system appear or
 work in a localized way, such as by formatting dates and numbers, sorting lists,
 and many other operations that vary by language or culture.
 
