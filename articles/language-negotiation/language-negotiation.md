@@ -24,16 +24,16 @@ with different linguistic or cultural needs.
 
 Localization of content can take different forms.
 For example, a site consisting of static files might just choose between different
-language versions of each page, while another site might load text into a blank template
+language versions of each page, while  a different site might load text into a blank template
 from resource bundles (such those employed by GNU gettext or Java's `java.util.ResourceBundle`).
 
-One aspect of language negotiation is that the result is usually a 
+Usually the outcome of the language negotiation process is a 
 [language tag](https://www.w3.org/TR/i18n-glossary/#dfn-language-tag)
 that identifies the user's locale.
 The language tags used on the Web (and by most software) are defined by
 [BCP47](https://rfc-editor.org/bcp/bcp47).
 
-A [locale](https://www.w3.org/TR/i18n-glossary/#dfn-locale) is:
+The W3C Internationalization Glossary defines as [locale](https://www.w3.org/TR/i18n-glossary/#dfn-locale) as:
 > An identifier (such as a language tag) for a set of international preferences. 
 > Usually this identifier indicates the preferred language of the user and 
 > possibly includes other information, such as a geographic region (such as a country). 
@@ -45,7 +45,7 @@ But they are also used in APIs that make the content or data in a system appear 
 work in a localized way, such as by formatting dates and numbers, sorting lists,
 and many other operations that vary by language or culture.
 
-As a result, language negotiation should really be called **_locale negotiation_**,
+Thus, language negotiation should really be called **_locale negotiation_**,
 because it includes the process that internationalized software uses to match a 
 user's [international preferences](https://www.w3.org/TR/i18n-glossary/#dfn-international-preferences)
 to the internationalized functionality and localized resources available
@@ -64,24 +64,24 @@ etc.) and to set the locale for internationalization (I18N) APIs such as
 > `en` (English), `es` (Spanish), and `fr` (French).
 > 
 > Using `en`, `es`, or `fr` as the locale in software, however, does not
-> produce complete results
-> or these locales may produce unexpected results compared to more-specific
+> produce complete results.
+> Such generic locales produce unexpected results compared to more-specific
 > locales that include, for example, region subtags.
 > Such regional variations in formatting affect how the software
 > presents values such as dates, times, numbers, and so forth,
 > which, in turn, affects how users experience the localization:
 > 
 > | Locale | Locale Description | Formatted Date  | Number | Currency |
-> |--------|--------------------|-----------------|--------|----------|
-> | en     | English | Jun 28, 2024, 1:24:45 PM | 1,234.56 |$1,234.56 |
+> |:-------|:------------------:|:----------------|:-------|:---------|
+> | **en** | English | Jun 28, 2024, 1:24:45 PM | 1,234.56 |$1,234.56 |
 > | en-US  | English (United States) | Jun 28, 2024, 1:24:45 PM | 1,234.56 |$1,234.56 |
 > | en-CA  | English (Canada) | Jun 28, 2024, 1:24:45 p.m. | 1,234.56 |US$1,234.56 |
 > | en-GB  | English (United Kingdom) | 28 Jun 2024, 13:24:45 | 1,234.56 |US$1,234.56 |
-> | fr     | French | 28 juin 2024, 13:24:45 | 1 234,56 |1 234,56 $US |
+> | **fr** | French | 28 juin 2024, 13:24:45 | 1 234,56 |1 234,56 $US |
 > | fr-CA  | French (Canada) | 28 juin 2024, 13 h 24 min 45 s | 1 234,56 |1 234,56 $ US |
 > | fr-FR  | French (France) | 28 juin 2024, 13:24:45 | 1 234,56 |1 234,56 $US |
+> | **es** | Spanish | 28 jun 2024, 13:24:45 | 1234,56 |1.234,56 US$ |
 > | es-419 | Spanish (Latin America) | 28 jun 2024, 1:24:45 p.m. | 1,234.56 |USD 1,234.56 |
-> | es     | Spanish | 28 jun 2024, 13:24:45 | 1234,56 |1.234,56 US$ |
 > | es-MX  | Spanish (Mexico) | 28 jun 2024, 1:24:45 p.m. | 1,234.56 |USD 1,234.56 |
 > | es-ES  | Spanish (Spain) | 28 jun 2024, 13:24:45 | 1234,56 |1.234,56 US$ |
 > | es-US  | Spanish (United States) | 28 jun 2024, 1:24:45 p.m. | 1,234.56 |$1,234.56 |
@@ -148,7 +148,7 @@ These can include:
 Locale negotiation is more reliable if the user has provided a strong signal
 (such as choosing their locale from a menu).
 Once the locale has been determined, it is usually a good idea to store the result
-for future use (including for offline interactions, such as push notifications).
+for future use (including for offline interactions, such as push notifications or emails).
 
 The simplest use case is a site or service that does not preserve the user's
 information between sessions, has no offline experience, and does not maintain
@@ -166,7 +166,7 @@ have three types of user profile:
   does not maintain one on the users behalf. There are no cookies or other
   cross-session indicators of the user's preference.
 - **Recognized User** - the user has a profile on
-  this site and there is some cross-session or other indication to
+  this site or there is some cross-session or other indication to
   associate the request with a specific user profile. However, the user
   has not authenticated themselves. Users in this state can have a measure
   of personalization done for them, but should not be given access to
@@ -236,29 +236,42 @@ In our example above, where the site is available in English, French, and Spanis
 there might only be three localizations, but twenty or more locales that the site _could_
 make available.
 Deciding which combinations of language and locale to expose to users and how to represent these
-depends on many factors.
+is a local decision that the site will need to make.
+A couple of best practices to briefly mention:
+* Avoid using national or regional flags as a proxy for language.
+* Present the locale in its own language.
+  Chinese speakers are more readily able to recognize `简体中文` than `Simplified Chinese`
+  just as English speakers are more readily able to recognize `English` than `英语`
 
 ## Constructing the Algorithm
 
-Hierarchical negotiation is the most common mechanism for performing locale negotiation.
-One way to implement this is to work from the least specific signal to the
-most specific one and then return the result.
+There is no one precise mechanism that applies to every site or organization's
+locale negotiation needs.
+Different factors have to be weighed by the developer to get the right result.
+These include what information is available about the user, both in terms of
+profile information and passively collected info.
 
-> For example:
->
-> 1. Let the return value be the site default.
-> 2. If the user's geographic region has a default let return value be that locale.
+In most cases, the result of this will be a hierarchical negotiation mechanism
+that uses different site configuration details and different user signals to arrive
+at the specific result.
+One way to implement this is to work from the least specific signal to the
+most specific one and then return the result, such as the following:
+
+> 1. Let `return_value` be the site default.
+> 2. If the user's geographic region has a default let `return_value` be that locale.
 > 3. If the user has an Accept-Language header
 >    i. For each language range in the A-L header
->       a. if the language range matches an available locale's language tag, let return value be that locale
-> 4. If the user has a cookie with a locale preference, let return value be that locale
-> 5. If the URL contains a (recognized, permitted) locale identifier, let return value be that locale
-> 6. If the user is recognized, let return value be the locale in the user's profile
+>       a. if the language range matches an available locale's language tag, let `return_value` be that locale
+> 4. If the user has a cookie with a locale preference, let `return_value` be that locale
+> 5. If the URL contains a (recognized, permitted) locale identifier, let `return_value` be that locale
+>    _Note: this might be in the path, domain name, file name, or a query parameter... or more than one of these_
+> 7. If the user is recognized, let `return_value` be the locale in the user's profile
 >
-> Return the return value.
+> Return `return_value`.
 
 Notice how the above algorithm might be tailored to weight one item higher
 (or lower) in the hierarchy.
+Notice too that the algorithm never fails (it always returns a valid result).
 
 The above short description leaves out checking if each language tag is in the 
 list of supported locales
