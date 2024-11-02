@@ -182,7 +182,7 @@ samp, kbd {
 
 /* LREQ DOC STYLES */
 
-.prompts { font-style: italic; color: #999; font-size: 90%; }
+.prompts, .status_prompt { font-style: italic; color: #999; font-size: 90%; }
 
 
 dl.reslinks {
