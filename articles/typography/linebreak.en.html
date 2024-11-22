@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>Approaches to line breaking</title>
-<meta name="description" content="Provides an overview of line-breaking strategies, and advice to authors and implementers." />
+<meta name="description" content="Provides an overview of line-breaking strategies, and advice to authors and implementers.">
 <script>
 var f = { }
 
@@ -36,10 +36,10 @@ f.additionalLinks = ''
 <!--TRANSLATORS must change -en in the line just above to the subtag for their language! -->
 <script src="../../javascript/doc-structure/article-2022.js"> </script>
 <script src="../../javascript/articletoc-2022.js"></script>
-<link rel="stylesheet" href="../../style/article-2022.css" />
-<link rel="copyright" href="#copyright"/>
+<link rel="stylesheet" href="../../style/article-2022.css">
+<link rel="copyright" href="#copyright">
 
-<style type="text/css" media="all">
+<style media="all">
 th.bytes {
 	font-size: 20px;
 }
@@ -169,14 +169,14 @@ figure img {
 <p>Many scripts work this way. Among others, they include scripts used for all major European languages, including Cyrillic and Greek; scripts used for  major Indian languages, such as Devanagari, Gujarati, and Tamil; scripts used for modern Semitic languages,  such as Arabic, Hebrew, and Syriac; and scripts used for American languages, such as Cherokee and Unified Canadian Syllabic (UCAS). </p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/deva.png" alt="Devanagari line breaks"/></p>
+<p><img src="linebreak-data/deva.png" alt="Devanagari line breaks"></p>
 <figcaption>Line break opportunities for Hindi text (Devanagari script).</figcaption>
 </figure>
 </div>
 <p>Languages written in right-to-left scripts, such as Arabic or Hebrew or Dhivehi, also typically wrap full words to the next line. However they do so, of course, in the opposite direction from, say, English.</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/arab.png" alt="Arabic line breaks"/></p>
+<p><img src="linebreak-data/arab.png" alt="Arabic line breaks"></p>
 <figcaption>Line break opportunities for Arabic text.</figcaption>
 </figure>
 </div>
@@ -184,7 +184,7 @@ figure img {
 <p>Text in languages such as Arabic, Hebrew or Dhivehi, however, gets significantly more complicated when it contains bidirectional text. If we make the text read '<span style="white-space:nowrap"><span dir="rtl" lang="ar">...في <span dir="rtl" lang="en">this is English</span> ذلك... </span></span>' in the above example we end up with the following.</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/arab-bidi.png" alt="Arabic line breaks in bidirectional text"/></p>
+<p><img src="linebreak-data/arab-bidi.png" alt="Arabic line breaks in bidirectional text"></p>
 <figcaption>Wrapping embedded opposite-direction text in Arabic.</figcaption>
 </figure>
 </div>
@@ -200,7 +200,7 @@ figure img {
 <p>Thai, Lao, and Khmer are languages that are written with no spaces between words. Spaces do occur, but they serve as phrase delimiters, rather than word delimiters. However, when Thai, Lao, or Khmer text reaches the end of a line, the expectation is that text is wrapped a word at a time.  For humans, this is is not too hard (if you speak the language), but applications have to find a way to understand the text in order to determine where the word boundaries are.  </p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/khmr.png" alt="Khmer line break opportunities."/></p>
+<p><img src="linebreak-data/khmr.png" alt="Khmer line break opportunities."></p>
 <figcaption>Line break opportunities in Khmer text.</figcaption>
 </figure>
 </div>
@@ -208,8 +208,8 @@ figure img {
 <p>Most applications do this by using dictionary lookup. It’s not 100% perfect, and authors may need to adjust things from time to time. For example, here are two alternative sets of line-breaking opportunities for a Thai phrase.</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/thai-alt1.png" alt="Long Thai words."/></p>
-<p><img src="linebreak-data/thai-alt2.png" alt="Shorter Thai words."/></p>
+<p><img src="linebreak-data/thai-alt1.png" alt="Long Thai words."></p>
+<p><img src="linebreak-data/thai-alt2.png" alt="Shorter Thai words."></p>
 <figcaption>Alternative line break opportunities for Thai text.</figcaption>
 </figure>
 </div>
@@ -236,7 +236,7 @@ figure img {
 <p>Tibetan wraps by moving complete syllables to the next line, so that the original line ends with a tsek mark.  Tibetan words can be made up of multiple syllables and although it is  preferable to avoid breaking a line in the middle of the word, it is not essential.  A syllable, on the other hand should always be kept intact.</p>
  <div class="figWrap">
        <figure>
-<p><img src="linebreak-data/tibt.png" alt="Line break opportunities in Tibetan."/></p>
+<p><img src="linebreak-data/tibt.png" alt="Line break opportunities in Tibetan."></p>
 <figcaption>Line break opportunities in Tibetan</figcaption>
  </figure>
 </div>
@@ -259,8 +259,8 @@ figure img {
 </div>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/kore-char.png" alt="Korean character-based line breaks"/></p>
-<p><img src="linebreak-data/kore-word.png" alt="Korean word-based line breaks"/></p>
+<p><img src="linebreak-data/kore-char.png" alt="Korean character-based line breaks"></p>
+<p><img src="linebreak-data/kore-word.png" alt="Korean word-based line breaks"></p>
 <figcaption>Alternative line break opportunities for Korean Hangul text.</figcaption>
 </figure>
 </div>
@@ -276,7 +276,7 @@ figure img {
 <p>We saw that Korean text uses spaces between words, but doesn't necessarily use those spaces to identify line-break opportunities. There are some other writing systems that also separate words by spaces, but may actually wrap on syllabic units. Unlike Korean, which normally wraps character by character, these writing systems use a  sequence of characters corresponding to a syllable as the unit of text.</p>
   <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/sund.png" alt="Sundanese line break opportunities."/></p>
+<p><img src="linebreak-data/sund.png" alt="Sundanese line break opportunities."></p>
 <figcaption>Line break opportunities in Sundanese text.</figcaption>
 </figure>
 </div>
@@ -289,14 +289,14 @@ figure img {
 <p>A number of other South East Asian scripts are written without spaces between words. In these writing systems you may also find text being wrapped at syllable boundaries, in addition to word boundaries.</p>
 <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/java.png" alt="Javanese line break opportunities."/></p>
+<p><img src="linebreak-data/java.png" alt="Javanese line break opportunities."></p>
 <figcaption>Line break opportunities in Javanese text.</figcaption>
 </figure>
 </div>
         <p>The break opportunities shown above for Javanese correspond to <em>orthographic</em> syllables, rather than phonetic ones. For example where one phonetic syllable ends with a consonant and the following syllable starts with a consonant they may be stacked or conjoined in a special way. Those combinations are not split. In many scripts these special conjuncts are likely to only occur internally within words, but in others (such as Javanese and Balinese) they may actually span word boundaries.</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/pangandika.png" alt="Javanese line break opportunities."/></p>
+<p><img src="linebreak-data/pangandika.png" alt="Javanese line break opportunities."></p>
 <figcaption>The different colours represent the two Javanese words <i lang="jv-latn" translate="no">pangan</i> and <i lang="jv-latn" translate="no">dika</i>, but the break opportunity (red line) comes before the stack, cutting off the final n from the previous word.</figcaption>
 </figure>
 </div>
@@ -315,7 +315,7 @@ figure img {
        <p>Japanese and Vai typically wrap individual characters to the next line, regardless of word or syllable boundaries. </p>
 <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/japn.png" alt="Japanese line break opportunities." data-setup="font-size:2em;border:3px;" title="すべて人は、自国その他いずれの国をも立ち去り、及び自国に帰る権利を有する。"/></p>
+<p><img src="linebreak-data/japn.png" alt="Japanese line break opportunities." data-setup="font-size:2em;border:3px;" title="すべて人は、自国その他いずれの国をも立ち去り、及び自国に帰る権利を有する。"></p>
 <figcaption>Line break opportunities in Japanese text.</figcaption>
 </figure>
 </div>
@@ -335,7 +335,7 @@ figure img {
 
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/ethi-space.png" alt="Amharic line break opportunities when words are separated by spaces."/></p>
+<p><img src="linebreak-data/ethi-space.png" alt="Amharic line break opportunities when words are separated by spaces."></p>
 <figcaption>Amharic line break opportunities when words are separated by spaces.</figcaption>
 </figure>
 </div>
@@ -347,7 +347,7 @@ figure img {
 </div>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/ethi-wordspace.png" alt="Ethiopic line break opportunities."/></p>
+<p><img src="linebreak-data/ethi-wordspace.png" alt="Ethiopic line break opportunities."></p>
 <figcaption>Amharic line break opportunities when words are separated by the Ethiopic wordspace character.</figcaption>
 </figure>
 </div>
@@ -381,7 +381,7 @@ figure img {
 <p>If that isn't possible, an alternative strategy sometimes seen in languages such as Japanese and Chinese involves leaving the punctuation hanging outside the margin at the end of the line. (Obviously, this only works if there is a visible margin available.)</p>
 <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/hanging_punctuation.png" alt=" "/></p>
+<p><img src="linebreak-data/hanging_punctuation.png" alt=" "></p>
 <figcaption>Hanging punctuation in Japanese text.</figcaption>
 </figure>
 </div>
@@ -403,8 +403,8 @@ figure img {
 <div class="sidenoteGroup">
 <p>Here we provide, by way of an example, some detail about line breaking in traditional Tibetan formats. In Tibetan,  <span class="uname">U+0F0D TIBETAN MARK SHAD</span><sup>1</sup> is used as a phrase delimiter, and a double shay is a topic delimiter. If just a single syllable before the shay wraps to a new line, the shay (or the first shay when there are two) is replaced by  <span class="uname">U+0F11 TIBETAN MARK RIN CHEN SPUNGS SHAD</span><sup>2</sup>.  At the end of a topic the rules say that only one shay should be converted, however it is moderately popular to convert both. This change serves as an optical indication that there is a left-over syllable at the beginning of the line that actually belongs to the preceding line.</p>
 <div class="sideinfonote">
-<p>1) <img src="linebreak-data/shad.png" alt="&#x0F0D;"/> SHAD (pronounced shay)</p>
-<p>2) <img src="linebreak-data/rin_chen_spungs_shad.png" alt="༑"/> RIN CHEN SPUNGS SHAD</p>
+<p>1) <img src="linebreak-data/shad.png" alt="&#x0F0D;"> SHAD (pronounced shay)</p>
+<p>2) <img src="linebreak-data/rin_chen_spungs_shad.png" alt="༑"> RIN CHEN SPUNGS SHAD</p>
 </div>
 </div>
 <div class="figWrap">
@@ -424,13 +424,13 @@ figure img {
 	    <li> some printed books do not use <i class="foreignphrase" lang="bo-Latn">rin chen spungs shad</i> replacements, however the majority of books seem to apply the same rules as are used with pechas.</li>
 </ul>
 <div class="sideinfonote">
-<p>3) <img src="linebreak-data/leu.png" alt="ལེའུ། །"/> <em>le'u</em></p>
+<p>3) <img src="linebreak-data/leu.png" alt="ལེའུ། །"> <em>le'u</em></p>
 </div>
 </div>
 <div class="sidenoteGroup">
 <p>To finish, an illustration of special behaviour in the Javanese script. When a new line begins with <span class="uname">U+A9BA JAVANESE VOWEL SIGN TALING</span><sup>4</sup>, an identical spacing glyph is placed at the end of the previous line. Importantly, there is only one taling character in memory: the first glyph is just a ghost.</p>
 <div class="sideinfonote">
-<p>4) <img src="linebreak-data/taling.png" alt="◌ꦺ"/> TALING</p>
+<p>4) <img src="linebreak-data/taling.png" alt="◌ꦺ"> TALING</p>
 </div>
 </div>
 <div class="figWrap">

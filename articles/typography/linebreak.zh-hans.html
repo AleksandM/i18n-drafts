@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-hans"><head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>断行的方法</title>
-<meta name="description" content="本文对概述断行策略进行了概述，并为内容作者和标准实现者提供一些建议。" />
+<meta name="description" content="本文对概述断行策略进行了概述，并为内容作者和标准实现者提供一些建议。">
 <script>
 var f = { }
 
@@ -36,11 +36,11 @@ f.additionalLinks = ''
 <!--TRANSLATORS must change -en in the line just above to the subtag for their language! -->
 <script src="../../javascript/doc-structure/article-2022.js"> </script>
 <script src="../../javascript/articletoc-2022.js"></script>
-<link rel="stylesheet" href="../../style/article-2022.css" />
-<link rel="copyright" href="#copyright"/>
+<link rel="stylesheet" href="../../style/article-2022.css">
+<link rel="copyright" href="#copyright">
 <link rel="stylesheet" href="linebreak-data/local.css">
 
-<style type="text/css" media="all">
+<style media="all">
 th.bytes {
 	font-size: 20px;
 }
@@ -182,7 +182,7 @@ figure img {
 <p>许多文种都使用这种方法。其中包括用于所有主要欧洲语言的文字，包括西里尔字母和希腊字母； 用于主要印度语言的文种，例如天城文、古吉拉特文和泰米尔文；用于现代闪米特语族的分支语言的文种，如阿拉伯文、希伯来文和叙利亚字母；以及用于美洲语言的文字，例如切罗基语和加拿大原住民音节文字（UCAS）。</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/deva.png" alt="天城文的断行"/></p>
+<p><img src="linebreak-data/deva.png" alt="天城文的断行"></p>
 <figcaption>印地语文本（天城文）的换行机会</figcaption>
 </figure>
 
@@ -190,7 +190,7 @@ figure img {
 <p>以从右向左的文字书写的语言（如阿拉伯语、希伯来语和迪维希语）通常也会将完整的单词换行到下一行。当然，其方向与英语等语言相反。</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/arab.png" alt="阿拉伯文的断行"/></p>
+<p><img src="linebreak-data/arab.png" alt="阿拉伯文的断行"></p>
 <figcaption>阿拉伯语的换行机会</figcaption>
 </figure>
 </div>
@@ -198,7 +198,7 @@ figure img {
 <p>然而，当包含双向文本时，阿拉伯语、希伯来语或迪维希语等语言的文本会变得更加复杂。如果我们在上面的例子中让文本变成“<span style="white-space:nowrap"><span dir="rtl" lang="ar">...في <span dir="rtl" lang="en">this is English</span> ذلك... </span></span>”，我们会得到以下结果。</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/arab-bidi.png" alt="阿拉伯语双向文本的换行"/></p>
+<p><img src="linebreak-data/arab-bidi.png" alt="阿拉伯语双向文本的换行"></p>
 <figcaption>对嵌入反方向文本的阿拉伯语换行</figcaption>
 </figure>
 </div>
@@ -216,7 +216,7 @@ figure img {
 <p>泰语、老挝语和柬埔寨语在书写时单词之间不包含空格。文本中确实会出现空格，但空格被用作短语分隔符，而不是单词分隔符。然而，当泰语、老挝语或柬埔寨语文本到一行的末尾时，需要按词断行。对于人类来说，这并不太难（如果你会这种语言的话），但应用程序必须找到来理解文本以确定词边界的方法。</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/khmr.png" alt="柬埔寨语的断行机会"/></p>
+<p><img src="linebreak-data/khmr.png" alt="柬埔寨语的断行机会"></p>
 <figcaption>柬埔寨语的断行机会</figcaption>
 </figure>
 </div>
@@ -225,8 +225,8 @@ figure img {
 <p>大多数应用会使用字典查询的方式来实现，这种方式不是100%完美的，作者可能需要不时进行调整。例如，对于同样的泰语文本有两种可能的换行方式。</p>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/thai-alt1.png" alt="较长的泰语单词"/></p>
-<p><img src="linebreak-data/thai-alt2.png" alt="较短的泰语单词"/></p>
+<p><img src="linebreak-data/thai-alt1.png" alt="较长的泰语单词"></p>
+<p><img src="linebreak-data/thai-alt2.png" alt="较短的泰语单词"></p>
 <figcaption>泰语文本的不同换行方式</figcaption>
 </figure>
 </div>
@@ -259,7 +259,7 @@ figure img {
 <p>藏文通过将完整的音节移动到下一行来换行，因此原始行以音节符结束。藏语单词可以由多个音节组成，虽然最好避免在单词中间断行，但这不是必需的，而音节应始终保持完整。</p>
  <div class="figWrap">
        <figure>
-<p><img src="linebreak-data/tibt.png" alt="藏语的换行机会"/></p>
+<p><img src="linebreak-data/tibt.png" alt="藏语的换行机会"></p>
 <figcaption>藏语的换行机会</figcaption>
  </figure>
 </div>
@@ -285,8 +285,8 @@ figure img {
 </div>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/kore-char.png" alt="基于字符的朝鲜语/韩国语断行"/></p>
-<p><img src="linebreak-data/kore-word.png" alt="基于单词的朝鲜语/韩国语断行"/></p>
+<p><img src="linebreak-data/kore-char.png" alt="基于字符的朝鲜语/韩国语断行"></p>
+<p><img src="linebreak-data/kore-word.png" alt="基于单词的朝鲜语/韩国语断行"></p>
 <figcaption>朝鲜语/韩国语文本的不同换行机会</figcaption>
 </figure>
 </div>
@@ -304,7 +304,7 @@ figure img {
 <p>我们看到朝鲜语/韩国语文本在单词之间使用空格，但不一定用这些空格作为断行机会。还有一些其他的书写系统也用空格分隔单词，但实际上可能会在音节边界处换行。与常常一个字符一个字符地换行的韩国语不同，这些书写系统使用与音节相对应的一系列字符作为文本单位。</p>
   <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/sund.png" alt="巽他语的断行机会"/></p>
+<p><img src="linebreak-data/sund.png" alt="巽他语的断行机会"></p>
 <figcaption>巽他语的断行机会</figcaption>
 </figure>
 </div>
@@ -318,7 +318,7 @@ figure img {
 <p>许多其他东南亚文字在单词之间没有空格。在这些书写系统中，除了词边界之外，你可能还会发现文本在音节边界处换行。</p>
 <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/java.png" alt="爪哇语的断行机会"/></p>
+<p><img src="linebreak-data/java.png" alt="爪哇语的断行机会"></p>
 <figcaption>爪哇语中的断行机会</figcaption>
 </figure>
 
@@ -327,7 +327,7 @@ figure img {
 <div class="figWrap">
 <figure>
 
-<p><img src="linebreak-data/pangandika.png" alt="爪哇语的断行机会"/></p>
+<p><img src="linebreak-data/pangandika.png" alt="爪哇语的断行机会"></p>
 <figcaption>不同的颜色代表两个爪哇语词<i lang="jv-latn" translate="no">pangan</i>和<i lang="jv-latn" translate="no">dika</i>，但断行机会（红线）出现在这个结构之前，把最后的n从前一个词中截断。</figcaption>
 </figure>
 </div>
@@ -348,7 +348,7 @@ figure img {
        <p>日语和瓦伊语通常将单个字符换行到下一行，而不管单词或音节的边界。 </p>
 <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/japn.png" alt="日语中的断行机会" data-setup="font-size:2em;border:3px;" title="すべて人は、自国その他いずれの国をも立ち去り、及び自国に帰る権利を有する。"/></p>
+<p><img src="linebreak-data/japn.png" alt="日语中的断行机会" data-setup="font-size:2em;border:3px;" title="すべて人は、自国その他いずれの国をも立ち去り、及び自国に帰る権利を有する。"></p>
 <figcaption>日语文本中的断行机会</figcaption>
 </figure>
 
@@ -371,7 +371,7 @@ figure img {
 
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/ethi-space.png" alt="当单词由空格分隔时，阿姆哈拉语中的换行机会"/></p>
+<p><img src="linebreak-data/ethi-space.png" alt="当单词由空格分隔时，阿姆哈拉语中的换行机会"></p>
 <figcaption>当单词由空格分隔时，阿姆哈拉语中的换行机会</figcaption>
 </figure>
 </div>
@@ -384,7 +384,7 @@ figure img {
 </div>
 <div class="figWrap">
 <figure>
-<p><img src="linebreak-data/ethi-wordspace.png" alt="埃塞俄比亚文本中的断行机会"/></p>
+<p><img src="linebreak-data/ethi-wordspace.png" alt="埃塞俄比亚文本中的断行机会"></p>
 <figcaption>当单词由埃塞俄比亚的词分隔符分开时，阿姆哈拉语中的换行机会</figcaption>
 </figure>
 </div>
@@ -426,7 +426,7 @@ figure img {
 <p>如果无法做到这一点，有时在日语和中文等语言中看到的另一种策略是将标点符号留在行尾的边距之外。（显然，这只在有可见边距时才能有效。）</p>
 <div class="figWrap">
    <figure>
-<p><img src="linebreak-data/hanging_punctuation.png" alt=" "/></p>
+<p><img src="linebreak-data/hanging_punctuation.png" alt=" "></p>
 <figcaption>日语中的标点悬挂</figcaption>
 </figure>
 </div>
@@ -453,8 +453,8 @@ figure img {
 <div class="sidenoteGroup">
 <p>在这里，我们通过示例提供一些有关传统藏文断行的情况。在藏文中，<span class="uname">U+0F0D TIBETAN MARK SHAD</span><sup>1</sup>用作短语分隔符，双垂符（双shay）是主题分隔符。如果shay之前只有一个音节换行，则shay（或第一个shay，当有两个时）就会被替换为<span class="uname">U+0F11 TIBETAN MARK RIN CHEN SPUNGS SHAD</span><sup>2</sup>。在一个主题的结尾，根据藏文规则只能转换一个shay，但是转换两个是比较流行的。这种变化表明在该行的开头有一个实际上属于前一行的遗留音节。</p>
 <div class="sideinfonote">
-<p>1) <img src="linebreak-data/shad.png" alt="&#x0F0D;"/> SHAD（单垂符，发音为shay）</p>
-<p>2) <img src="linebreak-data/rin_chen_spungs_shad.png" alt="༑"/> RIN CHEN SPUNGS SHAD（聚宝垂符，前垂符）</p>
+<p>1) <img src="linebreak-data/shad.png" alt="&#x0F0D;"> SHAD（单垂符，发音为shay）</p>
+<p>2) <img src="linebreak-data/rin_chen_spungs_shad.png" alt="༑"> RIN CHEN SPUNGS SHAD（聚宝垂符，前垂符）</p>
 </div>
 </div>
 <div class="figWrap">
@@ -477,14 +477,14 @@ figure img {
 	    <li> 一些纸质书不使用聚宝垂符的替代，但是大多数书似乎使用与pecha相同的规则。</li>
 </ul>
 <div class="sideinfonote">
-<p>3) <img src="linebreak-data/leu.png" alt="ལེའུ། །"/> <em>le'u</em></p>
+<p>3) <img src="linebreak-data/leu.png" alt="ལེའུ། །"> <em>le'u</em></p>
 </div>
 </div>
 <div class="sidenoteGroup">
 
 <p>最后说一下爪哇文中的特殊行为。当新的一行以<span class="uname">U+A9BA JAVANESE VOWEL SIGN TALING</span><sup>4</sup>开始时，一个相同的字形将放置在上一行的行尾。重要的是，内存中只有一个taling字符：上一行的字是个幽灵。</p>
 <div class="sideinfonote">
-<p>4) <img src="linebreak-data/taling.png" alt="◌ꦺ"/> TALING</p>
+<p>4) <img src="linebreak-data/taling.png" alt="◌ꦺ"> TALING</p>
 </div>
 </div>
 <div class="figWrap">
