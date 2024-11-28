@@ -57,7 +57,7 @@ suffix: '';
 }
 @counter-style upright-decimal {
   system: extends decimal;
-  suffix: '.';
+  suffix: '';
 }
 @counter-style upright-parens {
   system: extends decimal;
@@ -70,17 +70,17 @@ suffix: '';
 
 
 /* EXAMPLE WITH UPRIGHT CHARACTERS */
-#out_counter_styles div {
+#out-circled_decimal div {
     writing-mode:vertical-rl;
     padding-block:1rem;
     width:100%;
     height:18rem;
     }
-#out_counter_styles ol {
+#out-circled_decimal ol {
     font-family: 'hiragino sans', meiryo;
     margin-inline: 0;
     }
-#out_counter_styles li {
+#out-circled_decimal li {
     list-style-type: circled-decimal;
     margin-block: 0;
     }
@@ -119,7 +119,7 @@ suffix: '';
     }
 #out_marker_styles li {
   list-style-type: upright-parens;
-  padding-inline-start: .4em;
+  padding-inline-start: 1em;
   }
 #out_marker_styles li::marker {
   text-combine-upright: all;
@@ -161,11 +161,11 @@ suffix: '';
   <p>In Chinese, Japanese, Korean, and Mongolian vertically-set text it is normal for list counters to sit upright above the start of the list.</p>
   
   <figure id="fig_vertical_lists">
-  <img src="qa-upright-counters-in-vertical-data/vertical_lists.png" alt="Picture of a vertical list in Japanese with numeric counters." style="margin-inline:2rem;">
+  <img src="qa-upright-counters-in-vertical-data/vertical_lists.png" alt="Picture of a vertical list in Japanese with numeric counters." style="margin-inline:2rem; height: 25em;">
   <img src="qa-upright-counters-in-vertical-data/mongolian_list.jpg" alt="Picture of a vertical list in Mongolian with numeric counters." style="margin-inline:2rem;">
 </figure>
   
-<p>Until recently this was problematic, because browsers would only show the numbers lying on their side. This article describes how to make them stand upright as shown in the picture above, and the currently remaining issues to make this look perfect.</p>
+<p>Until recently this was problematic, because browsers would only show the numbers lying on their side. This article describes how to make them stand upright as shown in the picture above, and the currently remaining issues.</p>
 </section>
 
 
@@ -181,19 +181,21 @@ suffix: '';
 <section id="detail">
 <h2>Details</h2>
 
-<p>We'll look at two alternative approaches, one of which works across all major browser engines, and another which doesn't currently work with WebKit browsers.</p>
+<p>We'll look at three alternative approaches, one of which works across all major browser engines,  another which doesn't currently work with WebKit browsers, and a third that doesn't yet work with any major browser.</p>
+
+
+
 
 
 <section id="whatfor">
-<h3>Use counter-styles</h3>
+<h3>Use counter-styles &amp; upright characters</h3>
 
-<p>Customised counter-styles are now supported by all major browser engines. This therefore provides an interoperable solution.</p>
+<p>The simplest approach is to use counters that are always upright in vertical text.</p>
 
-<p>This simple solution works because the counters chosen appear upright in vertical text.</p>
+<p>Customised counter-styles are now supported by all major browser engines. This therefore provides an opportunity that will lead to an interoperable solution.</p>
+<p>First, you need to create an <code class="kw" translate="no">@counter-style</code> declaration in your CSS. We suggest a circled decimal style below, but as these are customisable you can also make up your own.</p>
 
-<p>First, you need to create an <code class="kw" translate="no">@counter-style</code> declaration in your CSS. We suggest two alternatives below, but as these are customisable you can also make up your own.</p>
-
-<p><span class="leadin">Option 1.</span> Numbers followed by dots.</p>
+<!--<p><span class="leadin">Option 1.</span> Numbers followed by dots.</p>
 
 
 <figure class="example" lang="ja">
@@ -203,12 +205,10 @@ symbols: '\2488' '\2489' '\248A' '\248B' '\248C' '\248D' '\248E' '\248F' '\2490'
 /* symbols: '⒈' '⒉' '⒊' '⒋' '⒌' '⒍' '⒎' '⒏' '⒐' '⒑' '⒒' '⒓' '⒔' '⒕' '⒖' '⒗' '⒘' '⒙' '⒚' '⒛'; */
 suffix: '';
 }</code></pre>
-</figure>
+</figure>-->
 
 
-<p><span class="leadin">Option 2.</span> Circled numbers.</p>
-
-
+<!--<p><span class="leadin">Option 1.</span> Circled numbers.</p>-->
 <figure class="example" lang="ja">
 <pre><code class="language-css">@counter-style circled-decimal { 
 system: fixed 0;
@@ -219,19 +219,19 @@ suffix: '';
 </figure>
 
 
-<p>These counter style definitions are taken from <a href="https://www.w3.org/TR/predefined-counter-styles/#digit-styles">Ready-made Counter Styles</a>, where you can find several alternative styles that may be of interest. The suffix is still specified, to avoid the  default full stop appearing, but is reduced to a null string to avoid harmful effects on the horizontal positioning.</p>
+<p>This counter style definition is taken from <a href="https://www.w3.org/TR/predefined-counter-styles/#digit-styles">Ready-made Counter Styles</a>, where you can find several alternative styles that may be of interest. The suffix is still specified, to avoid the  default full stop appearing, but is reduced to a null string to avoid harmful effects on the horizontal positioning.</p>
 
-<p>Note that these particular counter styles are of the 'fixed' type. This means that they only support lists containing up to 20 or 50 items, respectively.  This is probably not problematic for most lists in vertical text.</p>
+<p>Note that this particular counter style is of the “fixed” type. This means that it only supports lists containing up to  50 items. Other similar styles may support fewer counters. This is probably not problematic for most lists in vertical text.</p>
 
-<p>Once you have added these definitions to your CSS, then tie them to your list using CSS code such as the following. You can, of course, add a class name or context to your element selector, if you want to apply the style to just certain lists.</p>
+<p>Once you have added this counter-style definition to your CSS, then tie it to your list using CSS code such as the following. You can, of course, add a class name or context to your element selector, if you want to apply the style to just certain lists.</p>
 
 
 <figure class="example" lang="ja">
-<pre><code class="language-css">li { list-style-type: dotted-decimal; }</code></pre>
+<pre><code class="language-css">li { list-style-type: circled-decimal; }</code></pre>
 </figure>
 
 
-<div id="out_counter_styles" class="browser_output">
+<div id="out-circled_decimal" class="browser_output">
 <p class="browser_output_title">Output in your browser:</p>
 <div style="writing-mode:vertical-rl; list-style-type:dotted-decimal; padding-block:1rem; width:100%; height:18rem;">
 <ol><li>仕込む前に生芋を１／４ぐらいの大きさにカット。</li><li>すり潰した生芋</li><li>ながらのパケット式の定量練り、通称バタ練り機</li></ol>
@@ -247,7 +247,7 @@ suffix: '';
 <section id="issues">
 <h3>Styling the counter using ::marker</h3>
 
-<p>Many other counter styles will result in a counter lying on its side.  Here we look at how to prevent that, using ordinary decimal counters.  This would enable you to have lists longer than those described above, but it's necessary to take one or two extra steps to ensure that the counter is upright and is properly centred above the vertical line.</p>
+<p>Many horizontal counter styles use simple digits or alphabetic characters as counters, but in vertical text this will result in a counter lying on its side.  Here we look at how to prevent that, using ordinary decimal counters.  This would enable you to have lists longer than those described above, but it's necessary to take one or two extra steps to ensure that the counter is upright and is properly centred above the vertical line.</p>
 
 <p>For this approach we use the following CSS.</p>
 
@@ -278,6 +278,8 @@ li::marker {
 <ol class="upright-counters"><li>仕込む前に生芋を１／４ぐらいの大きさにカット。</li><li>すり潰した生芋</li><li>ながらのパケット式の定量練り、通称バタ練り機</li></ol>
 </div>
 </div>
+
+<p>The example above shows the basic mechanics, but it could do with some additional styling to look right.</p>
 </section>
 
 
@@ -285,10 +287,10 @@ li::marker {
 
 
 
-  <section id="recommendations">
+<section id="recommendations">
 <h3>Using more CSS to tweak the presentation</h3>
 
-<p>Both types of list described above can benefit from additional styling. For example, using the following CSS we can make the markers in the example just above slightly bigger, and coloured, and we can create a slightly larger gap between the counter and the list text.</p>
+<p>Both types of list described above can benefit from additional styling. For example, using the following CSS we can make the markers in the example just above slightly bigger, and coloured, and we can create a slightly larger gap between the counter and the list text. (Some of these things are slightly unusual, but they serve as a demonstration of what's possible.)</p>
 <p>We'll also change the counter to have parentheses around it. Note how the browser squeezes the result to fit within a line.</p>
 
 <p>In order to get the best results, you should probably also set the font for the counters, so as to ensure that they are a predictable size and shape.</p>
@@ -338,6 +340,47 @@ li::marker {
 <li>all animation and transition properties</li>
 </ol>
 </section>
+</section>
+
+
+
+
+
+
+<section id="option3">
+<h3>Mixing vertical &amp; horizontal in markers</h3>
+
+<p>Another common style of counters looks like the following.</p>
+
+  
+<figure id="fig_vertical_horizontal">
+<img src="qa-upright-counters-in-vertical-data/vertical_horizontal.png" alt="Picture of a vertical list in Japanese with numeric counters that have rotated parentheses above and below." style="margin-inline:2rem; height: 25em;">
+</figure>
+
+<p>The basic principle for creating this style is the same as previously described, but with a twist, because we need to allow the parentheses to rotate but keep the digit(s) upright.</p>
+<p>In theory, we just need to use a different value for <code class="kw" translate="no">text-combine-upright</code>.</p>
+
+
+<figure class="example" lang="ja">
+<pre><code class="language-css">
+@counter-style upright-decimal {
+	system: extends decimal;  /* same as before */
+	suffix: '';
+	}
+
+li {
+	list-style-type: upright-decimal; /* same as before */
+	}
+
+li::marker {
+	text-combine-upright: digits; /* new */
+	}</code></pre>
+</figure>
+
+
+<p>The <code class="kw" translate="no">digits</code> value seeks out digits within a string and makes them horizontal while leaving the surrounding text vertical. (The syntax shown should work for any 2-digit number. If you ever need to go higher than that, just use <code class="kw" translate="no">digits 4</code> to allow for numbers up to 9,999.)</p>
+
+<p>Unfortunately, this is only a theoretical solution for the time being, because no browser yet supports the <code class="kw" translate="no">digits</code> value.</p>
 </section>
 
 
