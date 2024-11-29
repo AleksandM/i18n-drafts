@@ -75,9 +75,9 @@ suffix: '';
     padding-block:1rem;
     width:100%;
     height:18rem;
+    font-family: 'hiragino sans', meiryo;
     }
 #out-circled_decimal ol {
-    font-family: 'hiragino sans', meiryo;
     margin-inline: 0;
     }
 #out-circled_decimal li {
@@ -93,6 +93,7 @@ suffix: '';
     padding-block:1rem;
     width:100%;
     height:18rem;
+    font-family: 'hiragino sans', meiryo;
     }
 #out_styled_marker ol {
     margin-inline: 0;
@@ -290,10 +291,10 @@ li::marker {
 <section id="recommendations">
 <h3>Using more CSS to tweak the presentation</h3>
 
-<p>Both types of list described above can benefit from additional styling. For example, using the following CSS we can make the markers in the example just above slightly bigger, and coloured, and we can create a slightly larger gap between the counter and the list text. (Some of these things are slightly unusual, but they serve as a demonstration of what's possible.)</p>
+<p>Both types of list described above can benefit from additional styling. For example, using the following CSS we can make the markers in the example just above slightly bigger, and coloured, and we can create an appropriately sized gap between the counter and the list text. (Some of these things are slightly unusual, but they serve as a demonstration of what's possible.)</p>
+
 <p>We'll also change the counter to have parentheses around it. Note how the browser squeezes the result to fit within a line.</p>
 
-<p>In order to get the best results, you should probably also set the font for the counters, so as to ensure that they are a predictable size and shape.</p>
 
 <figure class="example" lang="ja">
 <pre><code class="language-css">
@@ -311,7 +312,6 @@ li::marker {
     text-combine-upright: all;
     color: red;
     font-size: 1.2em;
-    font-family: 'Hiragino Sans', Meiryo;
     }
 </code></pre>
 </figure>
@@ -369,11 +369,11 @@ li::marker {
 	}
 
 li {
-	list-style-type: upright-decimal; /* same as before */
+	list-style-type: upright-parens; /* same as before */
 	}
 
 li::marker {
-	text-combine-upright: digits; /* new */
+	text-combine-upright: digits; /* changed */
 	}</code></pre>
 </figure>
 
