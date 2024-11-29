@@ -188,7 +188,7 @@ suffix: '';
 
 
 
-<section id="whatfor">
+<section id="option1">
 <h3>Use counter-styles &amp; upright characters</h3>
 
 <p>The simplest approach is to use counters that are always upright in vertical text.</p>
@@ -245,7 +245,7 @@ suffix: '';
 
 
 
-<section id="issues">
+<section id="option2">
 <h3>Styling the counter using ::marker</h3>
 
 <p>Many horizontal counter styles use simple digits or alphabetic characters as counters, but in vertical text this will result in a counter lying on its side.  Here we look at how to prevent that, using ordinary decimal counters.  This would enable you to have lists longer than those described above, but it's necessary to take one or two extra steps to ensure that the counter is upright and is properly centred above the vertical line.</p>
@@ -288,7 +288,7 @@ li::marker {
 
 
 
-<section id="recommendations">
+<section id="additional_styling">
 <h3>Using more CSS to tweak the presentation</h3>
 
 <p>Both types of list described above can benefit from additional styling. For example, using the following CSS we can make the markers in the example just above slightly bigger, and coloured, and we can create an appropriately sized gap between the counter and the list text. (Some of these things are slightly unusual, but they serve as a demonstration of what's possible.)</p>
@@ -340,7 +340,6 @@ li::marker {
 <li>all animation and transition properties</li>
 </ol>
 </section>
-</section>
 
 
 
@@ -382,6 +381,11 @@ li::marker {
 
 <p>Unfortunately, this is only a theoretical solution for the time being, because no browser yet supports the <code class="kw" translate="no">digits</code> value.</p>
 </section>
+</section>
+
+
+
+
 
 
 <section id="endlinks">
