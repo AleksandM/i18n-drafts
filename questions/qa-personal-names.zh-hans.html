@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+<meta charset="utf-8">
+<title>世界各地的人名</title>
+<meta name="description" content="世界各地的人名有何不同，这些差异对web的表单、数据库、本体等设计有什么影响？">
+<script>
+var f = { }
+
+// AUTHORS should fill in these assignments:
+f.directory = 'questions'+'/'; // the name of the directory this file is in
+f.filename = 'qa-personal-names'; // the file name WITHOUT extensions
+f.authors = 'Richard Ishida, W3C'; // author(s) and affiliations
+f.previousauthors = ''; // as above
+f.modifiers = ''; // people making substantive changes, and their affiliation
+f.searchString = 'article-qa-personal-names'; // blog search string - usually the filename without extensions
+f.firstPubDate = '2011-08-17'; // date of the first publication of the document (after review)
+f.lastSubstUpdate = { date:'2011-08-17', time:'19:22'}  // date and time of latest substantive changes to this document
+f.status = 'published';  // should be one of draft, review, published, or notreviewed
+f.path = '../' // what you need to prepend to a URL to get to the /International directory 
+
+// AUTHORS AND TRANSLATORS should fill in these assignments:
+f.thisVersion = { date:'2024-11-22', time:'17:46'} // date and time of latest edits to this document/translation
+f.contributors = 'Alberto Sánchez Molero, Kang Seonghoon, Casey McNamara, Bjarki Geir Benediktsson, Fabien Basmaison, Абрамова Алина Алексадровна, Carlos Mateo, Hedvig Skirgård'; // people providing useful contributions or feedback during review or at other times
+// also make sure that the lang attribute on the html tag is correct!
+
+// TRANSLATORS should fill in these assignments:
+f.translators = '薛富侨'; // translator(s) and their affiliation - a elements allowed, but use double quotes for attributes
+
+f.breadcrumb = 'forms';
+
+f.additionalLinks = ''
+</script>
+<script src="qa-personal-names-data/translations.js"> </script>
+<script src="../javascript/doc-structure/article-dt.js"> </script>
+<script src="../javascript/boilerplate-text/boilerplate-zh-hans.js"> </script><!-- TRANSLATORS must change -en to the subtag for their language! -->
+<script src="../javascript/doc-structure/article.js"> </script>
+<script src="../javascript/articletoc-html5.js"></script>
+<link rel="stylesheet" href="../style/article-2016.css" />
+<link rel="stylesheet" href="qa-personal-names-data/local.css" />
+<link rel="copyright" href="#copyright"/>
+</head>
+
+<body>
+<header>
+  <nav id="mainNavigation"></nav><script>document.getElementById('mainNavigation').innerHTML = mainNavigation</script>
+  
+  <h1>世界各地的人名</h1>
+</header>
+
+
+  <div id="audience">
+    <div id="updateInfo"></div><script>document.getElementById('updateInfo').innerHTML = g.updated</script> 
+  </div>
+  
+  <section>
+  <h2 id="question"><a href="#question">问题</a></h2>
+  <p class="question">世界各地的人名有何不同，这些差异对web的表单、数据库、本体等设计有什么影响？</p>
+  <p>创建web表单、数据库或本体的人通常不知道在其他国家和地区的人名可能有多么不同，因为他们建立自己的表单或数据库时对外国用户可能有过多的假设。本文将首先向你介绍一些用于人名的不同形式，然后介绍在web上处理人名时要考虑的一些内容。</p>
+  <p>本文并未提供所有答案，最佳答案将根据应用的需要而有所不同，而且在大多数情况下，可能很难找到“完美”的解决方案。本文试图通过介绍的方式让你了解一些关键问题。本文中的示例和建议主要与web表单和数据库相关。不过许多概念对于本体设计也是有用的，尽管我们不会在本文中举出具体的例子。</p>
+</section>
+
+
+<section>
+  <h2 id="scenarios"><a href="#scenarios">场景</a></h2>
+  <p>有几种关键场景需要考虑：</p>
+  <ol>
+    <li>
+      <p>你正在用一种语言（比如英语）设计一个表单，来自世界各地的人们将填写该表单。</p>
+    </li>
+    <li>
+      <p>你正在用一种语言设计表单，当网站被翻译成其他语言时，表单将被调整以适应特定语言环境的文化差异。</p>
+    </li>
+  </ol>
+  <p>在现实情况下，你可能无法针对每种不同的文化进行本地化，因此即使你使用第二种方法，有些人仍会使用并非专门针对其文化的表单。</p>
+</section>
+
+
+<section>
+  <h2 id="examples"><a href="#examples">差异示例</a></h2>
+  <p>首先，让我们看一看世界各地的人名如何不同的例子。</p>
+<p>这里的信息只是描述了对人的命名习惯中有许多重大差异的简单案例。在现实情况下，即使是在单一文化中，通常也<a href="#morenames">更加复杂</a>。</p>
+  <section>
+  <h3 id="patronymic"><a href="#patronymic">名和父名</a></h3>
+    <p>Björk是<b class="highlight">Björk Guðmundsdóttir</b>这个冰岛语的人名中的名（given name）。人名的第二部分表示父亲（有时是母亲）的名字，后面会有<span class="suffix">‑son</span>代表男性和‑dóttir代表女性。这更多的是一种描述，而不是西方意义上的姓氏。Björk的父亲Guðmundur是Gunnar的儿子，所以被称为Guðmundur Gunnarsson。</p>
+    <p>冰岛人通常使用他们的名（Björk）或全名（Björk Guðmundsdóttir）来称呼彼此。Björk通常不会期望被人叫做Guðmundsdóttir女士。冰岛的电话簿按名排序。</p>
+    <p>在印度南部、马来西亚和印度尼西亚的部分地区，一个人的名字中包含一个名和一个父名（patronymic）。</p>
+    <p>在马来语人名<b class="highlight">Isa bin Osman</b>中，“bin”一词的意思是“某人的儿子”（“binti”用于女性）。在称呼这个人时，你可能会说Isa先生，或者如果你和他熟识，也可以称他为Encik Isa（Encik 是一个马来语词汇，意思类似于“先生”）。</p>
+  </section>
+  
+  <section>
+    <h3 id="partorder"><a href="#partorder">人名的构成顺序</a></h3>
+    <p>在中文姓名<b class="highlight">毛泽东</b>中，姓（family name）是毛，也就是从左到右阅读时的<strong>第一个字</strong>。名（given name）是<strong>东</strong>。中间的字<strong>泽</strong>是字辈（generational name），毛泽东的兄弟姐妹（例如毛泽民、毛泽覃和毛泽红）都有这个字作为名字的一部分。</p>
+    <p>不太熟悉毛泽东的人可以称呼他为<strong>毛泽东先生</strong>或者<strong>毛先生</strong>（“先生”相当于英语的“Mr.”）。尽管现在（尤其在中国大陆）并非每个人都有字辈，但那些有字辈的人可能会希望你连同名一起使用。因此，如果你与名叫<strong>毛泽东</strong>的人关系熟悉，可以称呼他<strong>泽东</strong>，而不是只有<strong>东</strong>。</p>
+    <p>需要注意的是，中文姓名之间没有空格分隔。</p>
+    <p>其他一些文化，例如日本、朝鲜和匈牙利，也采用姓在前、名在后的姓名排列方式。</p>
+    <p>与外国人打交道的中国人，常常会采用一个更容易让西方人使用的外语名。例如，姚明（姓姚，名明）可能会在写给外国人时将自己的名字写成<strong>Fred Yao Ming</strong>或<strong>Fred Ming Yao</strong>。</p>
+  </section>
+  
+  <section>
+    <h3 id="multiplefamily"><a href="#multiplefamily">多个姓氏</a></h3>
+    <p>说西班牙语的人通常会有两个姓。比如，<b class="highlight">María José Carreño Quiñones</b>（José 是她名的一部分）可能是<strong>Antonio Carreño Rodríguez</strong>和<strong>María Quiñones Marqués</strong>的女儿。</p>
+    <p>你可以称她为<strong>Carreño小姐</strong>（Señorita Carreño），但不能称她为<strong>Quiñones小姐</strong>（Señorita Quiñones）。然而，近年来人们越来越倾向于避免使用反映女性婚姻状况的称谓（尤其是在男性称谓中没有类似区分的情况下），因此<strong>Señorita</strong>可能被<strong>Señora</strong>取代。</p>
+    <p>巴西人也有类似的习俗，他们甚至可能有三个或四个姓氏，借用其他祖先的名字，比如<b class="highlight">José Eduardo Santos Tavares Melo Silva</b>。</p>
+    <p>通常情况下，西班牙语国家的两个姓氏的顺序是<strong>父姓+母姓</strong>，而巴西的葡萄牙语姓氏通常是<strong>母姓+父姓</strong>。不过，这种顺序有时也可能改变。</p>
+    <p>此外，有些名字中还会加上短小的词语，例如<strong>de</strong>或<strong>e</strong>，用来连接姓，如<strong>Carreño de Quiñones</strong>或<strong>Tavares e Silva</strong>。</p>
+  </section>
+  
+  <section>
+    <h3 id="variants"><a href="#variants">词的变形</a></h3>
+    <p>我们已经了解到，在冰岛，父名的后缀根据孩子的性别不同，分别以‑son（表示儿子）或‑dóttir（表示女儿）结尾。而在俄罗斯，父名用作中间名，并且还会使用姓，也就是说，名字顺序为：名-父名-姓。父名和姓氏的结尾通常会表示出这个人是男性还是女性。比如，<b class="highlight">Борис Николаевич Ельцин</b>（Boris Nikolayevich Yeltsin，鲍里斯·尼古拉耶维奇·叶利钦）的妻子是<b class="highlight">Наина Иосифовна Ельцина</b>（Naina Iosifovna Yeltsina，奈娜·约瑟福芙娜·叶利钦娜）——可以注意到，丈夫的名字（包括父名）以辅音结尾，而妻子的名字（还有从父亲继承的父名）都以‑а结尾。</p>
+<p>顺便提一下，稍微不那么正式的俄语名字书写方式是姓-名-父名的顺序，比如：<b class="highlight">Ельцина Наина Иосифовна</b>。</p>
+  </section>
+  
+  <section>
+    <h3 id="middleinitial"><a href="#middleinitial">中间名首字母</a></h3>
+    <p>美国人通常会在名字中使用中间名首字母缩写，比如<b class="highlight">John Q. Public</b>。在美国设计的表格中，这种写法往往被认为是理所当然的。然而，即使是在英国，尽管人们可能也有一个或多个中间名，这种做法通常被认为是一种非常美国化的方式。在其他国家，拥有两个以上名字且通常不使用首字母缩写的人可能会对如何填写这些表格感到困惑。此外，还需注意，有些使用名字首字母缩写的人可能会将缩写放在姓名的开头。</p>
+<p>菲律宾人也会在名字中使用中间名首字母缩写，但它代表的是母亲婚前的姓氏，而不是名。例如，在<b class="highlight">Maria J. Go</b>中，“J”代表的是 Jimenez，这是Maria母亲的婚前姓氏。（实际上，一个首字母缩写可能代表多个名字：“D”在全名书写时可能表示“Dela Cruz”。）</p>
+  </section>
+  
+  <section>
+    <h3 id="inheritance"><a href="#inheritance">姓名的传承</a></h3>
+    <p>不要以为同一个家庭的成员一定共享相同的姓，这种假设是错误的。在西方，越来越多的女性在婚后保留自己的姓。在其他文化中，比如中国，这种做法本身就是常态。在某些国家，妻子可能选择使用丈夫的姓氏，也可能选择保留自己的姓氏。例如，如果马来女孩Zaiton嫁给了Isa，她可能仍然叫Mrs. Zaiton，也可能选择成为Zaiton Isa，在后面的情况下，她可能会被称为Mrs. Isa。</p>
+    <div class="sidenoteGroup">
+      <p>一些西班牙语国家的姓名处理方式稍有不同。1996年，Manuel A. Pérez Quiñones<a class="print" href="https://web.archive.org/web/19990429161253/http://exodo.upr.clu.edu/~mperez/apellidos.html">描述</a>了他家庭的命名方式。如上所述，他的姓氏（在西班牙语中称为<i class="foreign" lang="es">apellidos</i>）为Pérez Quiñones，因为他的父亲姓Pérez Rodríguez，而他的母亲姓Quiñones Alamo。后来，他和一个姓Padilla Falto的女孩结婚。婚后，女孩的姓氏变成了Padilla de Pérez。他们的孩子叫做Pérez Padilla，以此类推。关键之处在于，只有孩子们才会拥有相同的姓氏（<i class="foreign" lang="es">apellidos</i>）。</p>
+      <aside class="sideinfonote"><p class="info">在这里，我对Manuel的名字稍作了改动。实际上，他通常会将自己的姓用连字符连接为Pérez-Quiñones，以避免在美国引发对其姓名结构的混淆。其他人也可能采用类似的做法。</p></aside>
+    </div>
+    <p>此外，不要简单地假设姓只能从丈夫传递给妻子。有时，男性会在结婚后改为妻子的姓。在这种情况下，表格上的“原姓”（Previous name）可能比“女子婚前姓”（Maiden name）或“娘家姓”（née）这样的表述更为恰当。  </p>
+  </section>
+  
+  <section>
+    <h3 id="mixing"><a href="#mixing">混合起来</a></h3>
+    <p>许多文化会将姓名的不同特点加以混合，并融入自己的新创意。</p>
+    <p>例如，<b class="highlight">Velikkakathu Sankaran Achuthanandan</b>是来自印度南部喀拉拉邦的名字，通常写作<b class="highlight">V. S. Achuthanandan</b>，其命名顺序为“姓-父亲的名-名”。</p>
+    <p>在许多地方，名字的某些部分来源于头衔、地名、家族信息、种姓、宗教等。以下是一些例子：</p>
+    <ul>
+      <li>
+        <p>印度姓名<b class="highlight">Kogaddu Birappa Timappa Nair</b>的命名顺序为“村名-父亲的名-名-姓”。</p>
+      </li>
+      <li>拉贾斯坦语名<b class="highlight">Aditya Pratap Singh Chauhan</b>由“名-父亲的名-姓-种姓名”组成。</li>
+      <li>
+        <p>在印度的另一个地区，<b class="highlight">Madurai Mani Iyer</b>的命名顺序是“城镇名-名-种姓名”。</p>
+      </li>
+      <li>
+        <p>阿拉伯人名<b class="highlight">Abu Karim Muhammad al-Jamil ibn Nidal ibn Abdulaziz al-Filistini</b>翻译为：“Karim的父亲，穆罕默德（名），美丽的，Nidal之子，Abdulaziz之子，巴勒斯坦人”。其中“Karim”是穆罕默德的长子。（有关这种丰富的命名传统的更多细节，可参考<a class="print" href="https://en.wikipedia.org/wiki/Arabic_name" title="Arabic name">维基百科</a>。）  </p>
+      </li>
+    </ul>
+    <p>在泰国，人们有一个通常与正式名字无关的昵称，并且在非正式场合通常使用这个名字互相称呼。（与西方人打交道时，他们也倾向于用这个昵称自我介绍，因为昵称一般只有一个或两个音节，更容易发音。）前总理<b class="highlight">他信·西那瓦</b>的昵称是“<b class="highlight">Maew</b>（แม้ว）”。泰国人通常对家庭和朋友使用不同的昵称。</p>
+    <p>在越南，像<b class="highlight">Nguyễn Tấn Dũng</b>（阮晋勇）这样的名字的命名顺序是“姓-中间名-名”。尽管这种命名方式看起来和中国类似，但即使在正式场合，这位越南总理也会被称为“勇先生”，而不是“阮先生”。</p>
+  </section>
+  
+  <section>
+    <h3 id="japanese"><a href="#japanese">书面形式的歧义</a></h3>
+    <p>在日文姓名中，表意字符通常可以有多种读音。这种情况有时会使人难以准确地知道姓名的正确读音，同时也会对基于姓名读音的自动排序和检索造成问题。例如， <b class="highlight">東海林賢蔵</b>中的姓氏（<span lang="ja">東海林</span>）可能会被转写或读作Tōkairin或Shōji。</p>
+    <p>此外，不同的汉字可能具有相同的读音，因此罗马字（也就是拉丁字母转写）往往会丢失与姓名相关的重要区分信息。比如，<span lang="ja">庄司</span>、<span lang="ja">庄子</span>、<span lang="ja">東海林</span>和<span lang="ja">小路</span>都可以被转写为Shōji。</p>
+    <p>一些日文姓名还会使用现代日语中已经不再使用的字，这些字可能很难被读出来。</p>
+    <p>由于这些问题，日本人通常会在姓名的普通书写形式旁附上一个用非表意文字（假名）的读音版本，以明确姓名的发音。</p>
+  </section>
+  
+  <section>
+    <h3 id="morenames"><a href="#morenames">更多信息</a></h3>
+    <p>维基百科上有大量关于世界各地不同文化中人名的有趣文章，建议你通过以下链接阅读更详细的信息。</p>
+    <p><a class="print" href="https://en.wikipedia.org/wiki/Akan_names" title="阿肯人的姓名">阿肯人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Arabic_name" title="阿拉伯人的姓名">阿拉伯人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Balinese_name" title="巴厘人的姓名">巴厘人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Bulgarian_name" title="保加利亚人的姓名">保加利亚人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Czech_name" title="捷克人的姓名">捷克人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Chinese_name" title="中国人的姓名">中国人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Dutch_name" title="荷兰人的姓名">荷兰人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Fijian_name" title="斐济人的姓名">斐济人</a> • <a class="print" href="https://en.wikipedia.org/wiki/French_name" title="法国人的姓名">法国人</a> • <a class="print" href="https://en.wikipedia.org/wiki/German_name" title="德国人的姓名">德国人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Hawaiian_name" title="夏威夷人的姓名">夏威夷人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Hebrew_name" title="希伯来人的姓名">希伯来人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Hungarian_names" title="匈牙利人的姓名">匈牙利人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Icelandic_name" title="冰岛人的姓名">冰岛人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Indian_name" title="印度人的姓名">印度人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Indonesian_names" title="印度尼西亚人的姓名">印度尼西亚人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Irish_name" title="爱尔兰人的姓名">爱尔兰人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Italian_name" title="意大利人的姓名">意大利人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Japanese_name" title="日本人的姓名">日本人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Javanese_name" title="爪哇人的姓名">爪哇人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Korean_name" title="朝鲜民族的姓名">朝鲜民族</a> • <a class="print" href="https://en.wikipedia.org/wiki/Lithuanian_name" title="立陶宛人的姓名">立陶宛人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Malaysian_names" title="马来西亚人的姓名s">马来西亚人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Mongolian_name" title="蒙古人的姓名">蒙古人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Persian_name" title="波斯人的姓名">波斯人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Philippine_name" title="菲律宾人的姓名">菲律宾人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Polish_name" title="波兰人的姓名">波兰人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Portuguese_name" title="葡萄牙人的姓名">葡萄牙人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Eastern_Slavic_naming_customs" title="东斯拉夫人的姓名">俄罗斯族</a> • <a class="print" href="https://en.wikipedia.org/wiki/Spanish_naming_customs" title="西班牙人的姓名">西班牙人</a> • <a class="print" href="https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E5%8E%9F%E4%BD%8F%E6%B0%91%E6%97%8F%E4%BA%BA%E5%90%8D" title="台湾原住民族人名">台湾原住民族</a> • <a class="print" href="https://en.wikipedia.org/wiki/Thai_name" title="泰国人的姓名">泰国人</a> • <a class="print" href="https://en.wikipedia.org/wiki/Vietnamese_name" title="越南人的姓名">越南人</a></p>
+  </section>
+</section>
+
+
+<section>
+<h2 id="fielddesign"><a href="#fielddesign">对字段设计的影响</a></h2>
+  <aside class="insidenote"><img src="qa-personal-names-data/firstmlast.png" alt=" "  style="border-radius: 5px;"/></aside>
+  <p>如上所述，一种可能的处理方法是针对特定文化去做本地化的表单。理论上，这可以让你根据受众的需求量身定制表单。不过，这种方法可能仍存在一些缺点：</p>
+  <ul>
+    <li>如果你需要将来自多个地区的数据集中在一个数据库中，那么使用本地化的表单布局只会将跨文化信息合成的困难推迟到你需要存储数据的时候。</li>
+    <li>即使在同一个国家，人们通常也会有不同的姓名组成方式。例如，可能有外国人居住在该国，该国可能存在不同的文化元素（例如，新加坡人的名字来源于华人、马来人和南印度人），或者可能存在多种使用名字的方式。因此，你的表格通常需要允许一定的灵活性。</li>
+  </ul>
+  <p>接下来我们提出一些可能有用的一般指导原则。不过这是一个复杂的话题，这里的建议适用于比较普遍的情况，并不能解决所有问题。</p>
+  <section>
+    <h3 id="singlefield"><a href="#singlefield">分开还是不分开？</a></h3>
+    <p>如果你在设计一个表单或数据库来，接受来自不同背景的人的姓名，你应该问问自己，<mark id="req_onefield" class="requirement">是否真的需要为名和姓设置单独的字段</mark>。</p>
+    <p>这取决于你要对数据执行什么操作，但显然，在可能的情况下，仅使用用户提供的全名会更简单。</p>
+    <figure class="example">
+      <div class="sample_form">
+        <p class="form_title">你的个人资料</p>
+        <p>
+          <label for="fullname">姓名</label>
+          <br>
+          <input id="fullname" value="" type="text" style="width:250px;" />
+        </p>
+      </div>
+    </figure>
+    <p>请记住，某些文化中的名字可能比你自己的名字长很多。<mark id="req_longfield" class="requirement">确保输入字段足够长，以便输入长名称，并确保如果名称稍后显示在网页上，有足够的空间</mark>。另外，<mark class="requirement">避免限制数据库中名字的字段大小</mark>。特别是，不要假设你只需要4个字节就可以容纳UTF-8中四个字符的日文名——你可能需要12个字节。</p>
+  </section>
+  
+  <section>
+    <h3 id="splitting"><a href="#splitting">拆分姓名的策略</a></h3>
+    <p>如果你仍然觉得需要单独询问姓名的组成部分，<mark class="requirement">尽量避免使用非本地化形式的标签，如“first name”和“last name”</mark>，因为对于先写姓再写名的人来说，这可能会造成混淆。</p>
+    <figure class="example">
+      <div class="sample_form">
+        <p class="form_title">你的个人资料</p>
+        <p>
+          <label for="familyname">姓</label>
+          <br>
+          <input id="familyname" value="" type="text" style="width:250px;" />
+        </p>
+        <p>
+          <label for="othernames">其他/名</label>
+          <br>
+          <input id="othernames" value="" type="text" style="width:250px;" />
+        </p>
+      </div>
+    </figure>
+    <p>对于某些文化来说，这仍然是有问题的（比如冰岛人，他们没有姓氏），但是，除了非常本地化的定制之外，这可能是我们可以做的最佳通用表单。</p>
+    <p>在某些情况下，你想要识别姓名的各个部分，以便可以按字母顺序对姓名列表进行排序、联系他们等。<mark id="req_extrafield" class="requirement">考虑一下除了全名字段之外，是否还需要一个或多个额外字段，在这些字段中，你可以要求用户输入你需要用于特定目的的姓名部分。</mark>
+    </p>
+    <aside class="insidenote"> <img src="qa-personal-names-data/circles.png" alt=' ' /> </aside>
+    <p>有时，你可能选择使用单独的字段，因为你希望能够使用姓名的一部分来直接称呼或提及该人。例如，当Google+提到“Richard的联系人”时。或者可能是因为你想向他们发邮件，并在顶部显示他们的名字。请注意，你不仅可能会遇到姓名语法问题，还必须考虑到世界各地对称呼正式程度的期望不同（并非所有人都愿意让陌生人直呼其名）。最好<mark id="req_addressfield" class="requirement">在设置个人资料时单独询问用户希望你如何称呼他们</mark>。</p>
+    <figure class="example">
+      <div class="sample_form">
+        <p class="form_title">你的个人资料</p>
+        <p>
+          <label for="fullname3">全名</label>
+          <br>
+          <input id="fullname3" value="" type="text" style="width:250px;" />
+        </p>
+        <p>
+          <label for="salutation">我们该如何称呼您？<span style="color:#888;">（例如，当我们给您发送邮件时）</span></label>
+          <br>
+          <input id="salutation" value="" type="text" style="width:250px;" />
+        </p>
+      </div>
+    </figure>
+    <p>这个额外的字段对于从长列表中找到合适的名字以及处理泰国昵称也很有用。</p>
+    <p>顺便说一句，为了对日语姓名进行排序，你需要一个额外的字段，让他们输入姓名的发音，因为很多时候你从汉字中推断发音。此类发音信息用于对日语姓名进行排序。</p>
+    <p>另外，如果你为某人姓名的各个部分设置了单独的字段，请<mark id="req_labeling" class="requirement">确保清楚地标记出你想要的各个部分的位置</mark>。例如，不要假设他们提供的姓在名的后面。</p>
+    <p>
+      另外，要<mark id="req_algorithms" class="requirement">小心算法中自动提取姓名的各个部分的假设</mark>。例如，<a class="print" href="https://microformats.org/wiki/hcard#Implied_.22N.22_Optimization">隐含“n”优化</a>的v-card和h-card方法可能会遇到困难，比如在遇到中文名时。你应该<mark id="clearlabels" class="requirement">尽可能清楚地告诉人们如何给出他们的名字</mark>，这样你就可以捕获到需要的数据。</p>
+    <p>
+      <mark id="req_singleletter" class="requirement">不要假设单个字母的名字就是首字母。</mark>有时，人们的名字确实只有一个字母长。如果表单验证拒绝接受他们的名字并要求他们提供全名，这些人可能会遇到问题。如果你想鼓励人们不要使用首字母缩写，也许你应该将其作为警告消息，而不是阻止表单提交。</p>
+    <p>相似地，<mark id="req_nofamily" class="requirement">不强制人们提供姓</mark>。在印度南部、马来西亚和印度尼西亚等部分地区的文化中，许多人的名字只包含名，没有父名。如果你要求填写姓氏，则可能会在这些文化中造成严重问题，因为用户会在姓氏字段中输入“.”或“先生”之类的垃圾数据，只是为了提交表单。</p>
+  </section>
+  
+  <section>
+    <h3 id="otherthings"><a href="#otherthings">其他事项</a></h3>
+    <p>
+      <mark id="req_hyphens" class="requirement">允许人们在名字中使用连字符、撇号等标点符号。</mark>
+      <mark id="req_case" class="requirement">不要求姓名全部大写</mark>——在移动设备上这可能比较困难。
+      <mark id="req_spaces" class="requirement">允许用户输入带空格的名字</mark>，例如支持前缀和后缀（如法语中的de、德语中的von以及美国名字中的Jnr/Jr），也因为有些人认为以空格分隔的字符序列是一个整体，例如Rose Marie。</p>
+<p><mark id="req_case_normalization">不要规范名字的大小写。</mark>有些名字（例如“McNamara”）包含非首字母的大写字母；其他名字（例如“van der Waals”）包含非大写的单词。表单应保留用户输入的大小写，而不是强制要求此类名字始终且仅在每个单词的开头使用大写字母。</p>
+<p><mark id="req_samefamily" class="requirement">不要假设同一个家庭的成员会使用同一个姓氏。</mark></p>
+<p><mark id="req_title" class="requirement">问问自己是否有必要要求人们提供称谓。</mark>有些人根本不希望使用称谓。在这种情况下，他们应该能够将这一字段留空。如果你要求人们提供诸如先生/太太/女士之类的称谓来表明他们的性别，为什么不直接询问呢？这也避免了这样一个问题：你可能会无意中要求女性决定是否透露他们的婚姻状况，而不要求男性决定。当然，还要记住，世界各地的称谓差异很大（见<a href="#formality">下文</a>）。</p>
+  <p>正如前面提到的，因为改变姓氏的不仅仅是女性，<mark class="requirement">表单上最好要求填写“以前的姓名”，而不是“女子婚前姓”（Maiden name）或“娘家姓”（née）</mark>。</p>
+    <p>如果你正在设计根据每个文化进行本地化的表单，请不要忘记，原子化的人名组成部分可能仍需要存储在中央数据库中，因此，该数据库需要能够表示你通过将表单设计委托给本地化工作来处理的各种复杂性。</p>
+  </section>
+</section>
+
+
+<section>
+<h2 id="encoding"><a href="#encoding">对字符支持的影响</a></h2>
+  <p>英语使用者必须记住的第一件事是，大多数人的名字都不使用拉丁字母，而<em>使用</em>拉丁字母的人中，大多数人使用英语中没有的重音符号和字符。这一点说出来似乎很明显，但它对设计者有一些重要的影响，而这些影响往往被忽视。</p>
+  <div class="sidenoteGroup">
+    <p>如果你正在设计英文表单，你需要决定是否希望人们以自己的文种输入姓名（例如小林康宏）还是用拉丁字母输入姓名（例如Yasuhiro Kobayashi），或者两者兼而有之。</p>
+    <p>请记住，即使是英文名字也可能涉及非ASCII字符（例如Zoë）。</p>
+    <p>在某些情况下，比如在仅支持ASCII的系统上的登录名，你不能允许使用非ASCII字符。</p>
+    <p>人们在表单中输入的内容通常取决于表单及其页面是否使用他们的语言。如果页面使用他们的语言，那么返回非拉丁字符或带重音符的拉丁字符也不足为奇。</p>
+    <aside class="sideinfonote"><p class="info">就字母而言，只支持ASCII意味着使用英文字母表的基本字母，即 ABCDEFGHIJKLMNOPQRSTUVWXYZ（大写和小写）。</p></aside>
+  </div>
+  <div class="sidenoteGroup">
+    <p>
+      <mark id="req_asciionly" class="requirement">如果你希望只接受拉丁字母或ASCII，你需要告知用户。</mark>
+    </p>
+    <aside class="sideinfonote"><p class="warning">不要忘记告诉翻译你的页面的人向用户解释这一点。</p></aside>
+  </div>
+  <figure class="example">
+    <div class="sample_form">
+      <p class="form_title">你的个人资料</p>
+      <p>
+        <label for="asciionly">全名 &#xA0; <span style="color:#888;">（仅使用A至Z的字母，不能包含附加符号。）</span></label>
+        <br>
+        <input id="asciionly" value="" type="text" style="width:250px;" />
+      </p>
+    </div>
+  </figure>
+  <p>关于哪种方法最合适，在某种程度上取决于你收集人们的姓名的目的以及你打算如何使用它们。</p>
+  <ul>
+    <li>你是否收集此人的姓名只是为了在系统中保留一个标识符？如果是这样，那么姓名是以ASCII还是以其他文种存储可能并不重要。</li>
+    <li>或者你打算在欢迎页面或邮件中直呼其名？如果你要在以他们的语言书写的页面上使用他们的名字，使用母语文字来称呼他们的名字是明智的做法。</li>
+    <li>对于你的组织中处理查询的人员来说，识别和使用该人的姓名是否重要？如果是，你可能需要要求提供拉丁字母的版本。</li>
+    <li>他们的姓名是否会被显示或可搜索（例如，Flickr可选择在个人资料页面上显示人们的姓名和用户名）？或者你是否希望以他们的母语向他们发送信件，但在你的后台以英语等语言追踪他们的信息？如果是这样，<mark id="req_asciiandnative" class="requirement">你可能希望同时以拉丁字母和母语文字存储姓名，在这种情况下，你可能需要要求用户使用单独的字段以母语文字和拉丁字母形式提交姓名</mark>。</li>
+  </ul>
+  <figure class="example">
+    <div class="sample_form">
+      <p class="form_title">Your profile</p>
+      <p>
+        <label for="ownalphabet">Name (in your alphabet)</label>
+        <br>
+        <input id="ownalphabet" value="" type="text" style="width:250px;" />
+      </p>
+      <p>
+        <label for="latinonly">Latin transcription (if different)</label>
+        <br>
+        <input id="latinonly" value="" type="text" style="width:250px;" />
+      </p>
+    </div>
+  </figure>
+  <p>请注意，日本用户可能需要提供日语音节文字的转写，而不只是表意文字形式。这可能导致添加一个新的（第三个）字段。</p>
+  <p>
+    <mark id="req_useunicode" class="requirement">如果你接受非ASCII的名字，则应在页面、后端数据库以及其间的所有软件代码中使用Unicode字符编码（如UTF-8）。</mark>这将大大简化你的工作。</p>
+</section>
+
+
+<section>
+  <h2 id="bytheway"><a href="#bytheway">顺便一提</a></h2>
+  
+  <section>
+    <h3 id="sorting"><a href="#sorting">关于排序的说明</a></h3>
+    <p>世界各地的姓名列表并不总是按姓排序。比如，泰国人和冰岛人希望列表按名排序。</p>
+    <p>作为另一个例子，在西班牙语世界的不同地区，排序顺序也可能不同。例如，一个地方的María José Carreño Quiñones会希望通过查找Carreño Quiñones在列表中找到她的名字。然而，另一个地方的María José Carreño Quiñones会希望她的名字按Quiñones排序。</p>
+    <p>处理诸如“von”、“de”和“van”等小词会给排序带来额外的复杂性。有时前缀很重要，有时则不重要。</p>
+  </section>
+  
+  <section>
+    <h3 id="formality"><a href="#formality">礼节和敬称</a></h3>
+    <p>不同文化中有不同的正式程度。称呼某人时，你需要考虑到这一点。虽然名字在西方和科技界正成为一种流行的称呼方式，但它绝不是普遍适用的。在英国，第一次联系某人时使用名字有时可能意味着你之前曾见过他们。</p>
+    <p>另一方面，使用称谓和名字（例如“爱德华先生”）或仅用姓氏（如“温莎！”）来称呼某人在世界某些地方是可以接受的，但在其他地方则不可以（例如英国）。</p>
+    <p>在德国，称谓很重要，你可能不仅需要称呼某人为“Herr Schmidt”，还需要称其为“Herr Professor Doktor Schmidt”。</p>
+    <p>在日本文化中，在你联系的人的名字后面加上称谓或职称是很正常的。例如，人们通常称某人为Tanaka-san或Tanaka-sama（取决于你与他们的关系）。姓田中的部长通常被称为田中部长。虽然你可以在名字后面加上 -san，但在工作环境中这样做是不常见的。</p>
+  </section>
+</section>
+
+
+<section> 
+<h2 id="endlinks"><a href="#endlinks">进一步阅读</a></h2>
+<aside class="section" id="survey"> </aside><script>document.getElementById('survey').innerHTML = g.survey</script>
+
+  <ul id="full-links">
+    <li>
+      <p>请参阅<a href="#morenames">更多信息</a>中列出的维基百科文章。</p>
+    </li>
+    <li>
+      <p><a href="https://www.w3.org/International/wiki/Personal_names">对本文的评论</a>中有补充要点。</p>
+    </li>
+    <li>
+      <p>相关链接：制作网页</p>
+      <ul>
+      	<li><a href="/International/techniques/authoring-html#localnames">人名处理</a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<footer id="thefooter"></footer><script>document.getElementById('thefooter').innerHTML = g.bottomOfPage</script>
+<script>completePage()</script>
+</body>
+</html>
