@@ -51,7 +51,7 @@ s.accessKeyN = 'n 鍵跳至 <a href="#internal-links" accesskey="n">内頁瀏覽
 s.examplesInAnotherScript = "此文檔包含其他語言/程式的例子"
 s.worldMap = "世界地圖"
 s.searchI18nSite = "I18n 網站搜索" 
-s.translationDisclaimer = '此文檔為翻譯。如有不同或錯誤<a href="'+f.filename+'.en">最新的英語原文</a> 應為依照標準.<a href="#copyright">原始版權</a>屬于 W3C, 文件内容翻譯如下所示.'
+s.translationDisclaimer = '此文檔為翻譯。如有不同或錯誤<a href="'+f.filename+'.en">最新的英語原文</a> 應為依照標準.原始版權屬于 W3C, 文件内容翻譯如下所示.'
 s.relatedLinks = "相關鏈接"
 s.articles = "文章" // used in breadcrumbs, top right of page 
 s.topicIndexText = "内容索引"

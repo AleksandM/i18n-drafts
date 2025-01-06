@@ -51,7 +51,7 @@ s.accessKeyN = 'Accesskey n skips to <a href="#internal-links" accesskey="n">in-
 s.examplesInAnotherScript = "This document contains examples in another language/script."
 s.worldMap = "World map"
 s.searchI18nSite = "I18n site search" 
-s.translationDisclaimer = 'This document is a translation provided by a volunteer. In the case of any discrepancy or errors, the <a href="'+f.filename+'.en">latest English original</a> should be considered authoritative.<a href="#copyright">Original copyright</a> belongs to W3C, as shown below.'
+s.translationDisclaimer = 'This document is a translation provided by a volunteer. In the case of any discrepancy or errors, the <a href="'+f.filename+'.en">latest English original</a> should be considered authoritative. Original copyright belongs to W3C, as shown below.'
 s.relatedLinks = "Related links"
 s.articles = "Articles" // used in breadcrumbs, top right of page 
 s.topicIndexText = "Topic index"
