@@ -130,13 +130,13 @@ suffix: '';
 
 
 
-/* SPACING EXAMPLE */
+/* SPACING EXAMPLE 1 */
 #out_spacing div {
     writing-mode:vertical-rl;
     padding-block:0rem;
     width:100%;
     height:32rem;
-    font-family: 'hiragino sans', meiryo;
+    font-family: 'Hiragino Mincho Pro', 'MS Mincho';
     line-height: 1.6;
     }
 #out_spacing ol {
@@ -145,7 +145,7 @@ suffix: '';
     margin-block: 0;
     }
 #out_spacing li {
-  list-style-type: upright-decimal;
+  list-style-type: upright-parens;
   text-indent: 1em;
   }
 #out_spacing li::marker {
@@ -154,6 +154,37 @@ suffix: '';
   color: gray;
   }
 #out_spacing p {
+  text-indent: 1em;
+  margin-block: 0;
+  }
+
+
+
+/* SPACING EXAMPLE 2 */
+#out_spacing2 div {
+    writing-mode:vertical-rl;
+    padding-block:0rem;
+    width:100%;
+    height:32rem;
+    font-family: 'Hiragino Mincho Pro', 'MS Mincho';
+    line-height: 1.8;
+    }
+#out_spacing2 ol {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-block: 0;
+    }
+#out_spacing2 li {
+    list-style-type: upright-parens;
+    text-indent: -2.4em hanging;
+    margin-inline-start: 3em;
+    padding-inline-start: .4em;
+  }
+#out_spacing2 li::marker {
+  text-combine-upright: all;
+  font-size: 1em;
+  }
+#out_spacing2 p {
   text-indent: 1em;
   margin-block: 0;
   }
@@ -420,16 +451,19 @@ li::marker {
 <section id="layout">
 <h3>List layout</h3>
 
-<p>The layout of the list items and the list box can be managed using CSS properties. As an illustration, the following CSS code produces a layout similar to <a href="https://www.w3.org/TR/jlreq/#fig3_2_16" target="_blank">example 249</a> in the <abbr title="Requirements for Japanese Text Layout ">JLReq</abbr> document.</p>
+<p>The layout of the list items and the list box can be managed using CSS properties. Here we provide two illustrations.</p>
 
-<p>(In JLReq this example has the rotated parentheses in its markers, but since that can't currently be achieved in browsers we will use simple ASCII digits here.)</p>
+<section id="layout1">
+<h4>Example 1</h4>
+
+<p>The following CSS code produces a layout similar to <a href="https://www.w3.org/TR/jlreq/#fig3_2_16" target="_blank">example 249</a> in the <abbr title="Requirements for Japanese Text Layout ">JLReq</abbr> document. In JLReq this example has the rotated parentheses in its markers, but since that can't currently be achieved in browsers we will use simple upright parentheses here.</p>
 
 
 <figure class="example" lang="ja">
 <pre><code class="language-css">
-@counter-style upright-decimal {
+@counter-style upright-parens {
 	system: extends decimal;
-	suffix: '';
+	prefix: '('; suffix: ')';
 	}
 
 ol {
@@ -467,6 +501,61 @@ li::marker {
  <p>In the <a href="#additional_styling">previous section</a> the example applied a gap between the list markers and the list text so that the start of each item of list text was flush. This was achieved by setting initial padding on the <code class="kw" translate="no">li</code> element.</p>
  
  <p>The example we are emulating in this section is a little more complicated. In typical Japanese style, each paragraph, including each item of list text, has a 1-character gap at the beginning of its initial line. This is achieved using <code class="kw" translate="no">text-indent</code>.</p>
+</section>
+
+
+
+
+
+
+<section id="layout2">
+<h4>Example 2</h4>
+
+<p>In the next illustration the counter appears lower than the top of the list text. The CSS for this is slightly trickier than the previous example.  Again, we use non-rotated parens, but when the <code class="kw" translate="no">digits</code> value is supported we could use rotated parentheses.</p>
+
+<p class="info">At the time of writing, this layout is not achievable in Blink browsers such as Chrome (although it falls back to something acceptable). It does work in WebKit (Safari) and Gecko (Firefox) browsers. However, WebKit browsers don't yet rotate the digits, of course, so as long as your list is not very long an alternative might be to use counters <a href="https://www.w3.org/TR/predefined-counter-styles/#parenthesized-decimal" target="_blank">such as ⑴, ⑵, etc.</a> which are always upright.  <a href="qa-upright-counters-in-vertical-data/layout2.png" target="_blank">See how it looks in Firefox.</a></p>
+
+
+<figure class="example" lang="ja">
+<pre><code class="language-css">
+@counter-style upright-parens {
+	system: extends decimal;
+	prefix: '('; suffix: ')';
+	}
+
+ol {
+    margin: 0;
+    }
+li {
+    list-style-type: upright-parens;
+    text-indent: -2.4em hanging;
+    margin-inline-start: 3em;
+    padding-inline-start: .4em;
+  }
+li::marker {
+  text-combine-upright: all;
+  }
+</code></pre>
+</figure>
+
+
+<div id="out_spacing2" class="browser_output">
+<p class="browser_output_title">Output in your browser:</p>
+<div>
+<p>EOWGは、アクセシビリティの必要性の理解を深め、W3Cのアクセシビリティ基準が世界中で採用されるために、そしてさまざまな環境でのアクセシビリティ実装のために、重要な役割を果たすリソースを構築しました。いくつかの例を挙げると：</p>
+<ol>
+<li>アクセシビリティの基本概念概要および役割別のリソースに記載されている、マネージャー、テスター、政策立案者、教育者向けのリソース</li>
+<li>ページ構造、メニュー、画像、テーブル、カルーセル、フォームをカバーするチュートリアル</li>
+<li>障害を持つ人々がどのようにウェブを利用するか</li>
+<li>アクセシビリティのためのデザイン、執筆、開発のためのヒント</li>
+</ol>
+<p>EOWGのリソースは何百万回も閲覧され、政府、大学、産業界など、幅広いコンテキストで使用されています。EOWGのリソースは複数の言語に翻訳されています。</p>
+</div>
+</div>
+
+ 
+ <p>This time we use a hanging text indent that is balanced using <code class="kw" translate="no">margin-inline-start</code> to produce the layout we want. A small amount inline padding separates the counter from the following text, and that has to be factored in to the <code class="kw" translate="no">text-indent</code> calculation.</p>
+</section>
 </section>
 </section>
 
