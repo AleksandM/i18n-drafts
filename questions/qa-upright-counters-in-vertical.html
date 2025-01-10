@@ -112,7 +112,7 @@ suffix: '';
     writing-mode:vertical-rl;
     padding-block:1rem;
     width:100%;
-    height:18rem;
+    height:12rem;
     font-family: 'hiragino sans', meiryo;
     }
 #out_marker_styles ol {
@@ -126,6 +126,36 @@ suffix: '';
   text-combine-upright: all;
   color: red;
   font-size: 1.2em;
+  }
+
+
+
+/* SPACING EXAMPLE */
+#out_spacing div {
+    writing-mode:vertical-rl;
+    padding-block:0rem;
+    width:100%;
+    height:32rem;
+    font-family: 'hiragino sans', meiryo;
+    line-height: 1.6;
+    }
+#out_spacing ol {
+    margin-inline-start: 3em;
+    margin-inline-end: 0;
+    margin-block: 0;
+    }
+#out_spacing li {
+  list-style-type: upright-decimal;
+  text-indent: 1em;
+  }
+#out_spacing li::marker {
+  text-combine-upright: all;
+  font-size: 1em;
+  color: gray;
+  }
+#out_spacing p {
+  text-indent: 1em;
+  margin-block: 0;
   }
 
 /*
@@ -288,64 +318,6 @@ li::marker {
 
 
 
-<section id="additional_styling">
-<h3>Using more CSS to tweak the presentation</h3>
-
-<p>Both types of list described above can benefit from additional styling. For example, using the following CSS we can make the markers in the example just above slightly bigger, and coloured, and we can create an appropriately sized gap between the counter and the list text. (Some of these things are slightly unusual, but they serve as a demonstration of what's possible.)</p>
-
-<p>We'll also change the counter to have parentheses around it. Note how the browser squeezes the result to fit within a line.</p>
-
-
-<figure class="example" lang="ja">
-<pre><code class="language-css">
-@counter-style upright-parens {
-	system: extends decimal;
-	prefix: '('; suffix: ')';
-	}
-
-li { 
-    list-style-type: upright-parens;
-    padding-inline-start: .4em;
-    }
-
-li::marker {
-    text-combine-upright: all;
-    color: red;
-    font-size: 1.2em;
-    }
-</code></pre>
-</figure>
-
-
-<div id="out_marker_styles" class="browser_output">
-<p class="browser_output_title">Output in your browser:</p>
-<div style="writing-mode:vertical-rl; padding-block:1rem; width:100%; height:18rem;">
-<ol>
-<li>仕込む前に生芋を１／４ぐらいの大きさにカット。</li>
-<li>すり潰した生芋</li>
-<li>ながらのパケット式の定量練り、通称バタ練り機</li>
-</ol>
-</div>
-</div>
-
-
-<p>The CSS <code class="kw" translate="no">::marker</code> pseudo-element allows you to apply the following adjustments:</p>
-    
-<ol>
-<li>all font properties</li>
-<li>the <code class="kw" translate="no">white-space</code> property</li>
-<li><code class="kw" translate="no">color</code></li>
-<li><code class="kw" translate="no">text-combine-upright</code>, <code class="kw" translate="no">unicode-bidi</code>, and <code class="kw" translate="no">direction</code></li>
-<li>the <code class="kw" translate="no">content</code> property</li>
-<li>all animation and transition properties</li>
-</ol>
-</section>
-
-
-
-
-
-
 <section id="option3">
 <h3>Mixing vertical &amp; horizontal in markers</h3>
 
@@ -381,6 +353,121 @@ li::marker {
 
 <p>Unfortunately, this is only a theoretical solution for the time being, because no browser yet supports the <code class="kw" translate="no">digits</code> value.</p>
 </section>
+
+
+
+
+
+
+<section id="additional_styling">
+<h3>Using more CSS to tweak the presentation</h3>
+
+<p>Both types of list described above can benefit from additional styling. For example, using the following CSS we can make the markers in the example just above slightly bigger, and coloured, and we can create an appropriately sized gap between the counter and the list text. (Some of these things are slightly unusual, but they serve as a demonstration of what's possible.)</p>
+
+<p>We'll also change the counter to have parentheses around it. Note how the browser squeezes the result to fit within a line.</p>
+
+
+<figure class="example" lang="ja">
+<pre><code class="language-css">
+@counter-style upright-parens {
+	system: extends decimal;
+	prefix: '('; suffix: ')';
+	}
+
+li { 
+    list-style-type: upright-parens;
+    padding-inline-start: .4em;
+    }
+
+li::marker {
+    text-combine-upright: all;
+    color: red;
+    font-size: 1.2em;
+    }
+</code></pre>
+</figure>
+
+
+<div id="out_marker_styles" class="browser_output">
+<p class="browser_output_title">Output in your browser:</p>
+<div>
+<ol>
+<li>仕込む前に生芋を１／４ぐらいの大きさにカット。</li>
+<li>すり潰した生芋</li>
+<li>ながらのパケット式の定量練り、通称バタ練り機</li>
+</ol>
+</div>
+</div>
+
+
+<p>The CSS <code class="kw" translate="no">::marker</code> pseudo-element allows you to apply the following adjustments:</p>
+    
+<ol>
+<li>all font properties</li>
+<li>the <code class="kw" translate="no">white-space</code> property</li>
+<li><code class="kw" translate="no">color</code></li>
+<li><code class="kw" translate="no">text-combine-upright</code>, <code class="kw" translate="no">unicode-bidi</code>, and <code class="kw" translate="no">direction</code></li>
+<li>the <code class="kw" translate="no">content</code> property</li>
+<li>all animation and transition properties</li>
+</ol>
+</section>
+
+
+
+
+
+
+<section id="layout">
+<h3>List layout</h3>
+
+<p>The layout of the list items and the list box can be managed using CSS properties. As an illustration, the following CSS code produces a layout similar to <a href="https://www.w3.org/TR/jlreq/#fig3_2_16" target="_blank">example 249</a> in the <abbr title="Requirements for Japanese Text Layout ">JLReq</abbr> document.</p>
+
+<p>(In JLReq this example has the rotated parentheses in its markers, but since that can't currently be achieved in browsers we will use simple ASCII digits here.)</p>
+
+
+<figure class="example" lang="ja">
+<pre><code class="language-css">
+@counter-style upright-decimal {
+	system: extends decimal;
+	suffix: '';
+	}
+
+ol {
+    margin-inline-start: 3em;
+    margin-inline-end: 0;
+    }
+li { 
+    list-style-type: upright-decimal;
+    text-indent: 1em;
+    }
+li::marker {
+    text-combine-upright: all;
+    }
+</code></pre>
+</figure>
+
+
+<div id="out_spacing" class="browser_output">
+<p class="browser_output_title">Output in your browser:</p>
+<div>
+<p>EOWGは、アクセシビリティの必要性の理解を深め、W3Cのアクセシビリティ基準が世界中で採用されるために、そしてさまざまな環境でのアクセシビリティ実装のために、重要な役割を果たすリソースを構築しました。いくつかの例を挙げると：</p>
+<ol>
+<li>アクセシビリティの基本概念概要および役割別のリソースに記載されている、マネージャー、テスター、政策立案者、教育者向けのリソース</li>
+<li>ページ構造、メニュー、画像、テーブル、カルーセル、フォームをカバーするチュートリアル</li>
+<li>障害を持つ人々がどのようにウェブを利用するか</li>
+<li>アクセシビリティのためのデザイン、執筆、開発のためのヒント</li>
+</ol>
+<p>EOWGのリソースは何百万回も閲覧され、政府、大学、産業界など、幅広いコンテキストで使用されています。EOWGのリソースは複数の言語に翻訳されています。</p>
+</div>
+</div>
+
+ 
+ <p>We want the list counters to have a 2-character gap above them. Note, however, that we give the top of the list box (<code class="kw" translate="no">ol</code>) an offset of 3em because this determines the distance to the beginning of the <em>list text</em>, rather than the list markers).</p>
+ 
+ <p>In the <a href="#additional_styling">previous section</a> the example applied a gap between the list markers and the list text so that the start of each item of list text was flush. This was achieved by setting initial padding on the <code class="kw" translate="no">li</code> element.</p>
+ 
+ <p>The example we are emulating in this section is a little more complicated. In typical Japanese style, each paragraph, including each item of list text, has a 1-character gap at the beginning of its initial line. This is achieved using <code class="kw" translate="no">text-indent</code>.</p>
+</section>
 </section>
 
 
@@ -402,6 +489,7 @@ li::marker {
     <li>
       <p><cite>Language Enablement</cite></p>
       <ul>
+        <li><a href="https://www.w3.org/TR/typography/#lists">Lists, counters, etc</a></li>
         <li><a href="https://www.w3.org/TR/typography/#writing_mode">Writing mode</a></li>
       </ul>
     </li>
