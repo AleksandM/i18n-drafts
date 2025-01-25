@@ -63,6 +63,10 @@ suffix: '';
   system: extends decimal;
   prefix: '('; suffix: ')';
 }
+@counter-style trad-chinese-informal-space {
+  system: extends trad-chinese-informal;
+  suffix: '\3001\3000';
+}
 
 
 
@@ -176,9 +180,9 @@ suffix: '';
     }
 #out_spacing2 li {
     list-style-type: upright-parens;
-    text-indent: -2.4em hanging;
+    text-indent: -2.5em hanging;
     margin-inline-start: 3em;
-    padding-inline-start: .4em;
+    padding-inline-start: .5em;
   }
 #out_spacing2 li::marker {
   text-combine-upright: all;
@@ -186,6 +190,32 @@ suffix: '';
   }
 #out_spacing2 p {
   text-indent: 1em;
+  margin-block: 0;
+  }
+
+
+
+/* SPACING EXAMPLE 3 */
+#out_spacing3 div {
+    writing-mode:vertical-rl;
+    padding-block:0rem;
+    width:100%;
+    height:32rem;
+    font-family: 'Apple LiSung', 'MingLiu';
+    line-height: 1.8;
+    }
+#out_spacing3 ol {
+    margin-inline-start: 1em;
+    margin-inline-end: 0;
+    margin-block: 0;
+    }
+#out_spacing3 li {
+    list-style-type: trad-chinese-informal-space;
+    text-indent: 1em;
+    list-style-position: inside;
+  }
+#out_spacing3 p {
+  text-indent: 0;
   margin-block: 0;
   }
 
@@ -360,7 +390,10 @@ li::marker {
 </figure>
 
 <p>The basic principle for creating this style is the same as previously described, but with a twist, because we need to allow the parentheses to rotate but keep the digit(s) upright.</p>
+
 <p>In theory, we just need to use a different value for <code class="kw" translate="no">text-combine-upright</code>.</p>
+
+<p class="info">Unfortunately, this is only a theoretical solution for the time being, because no browser yet supports the <code class="kw" translate="no">digits</code> value.</p>
 
 
 <figure class="example" lang="ja">
@@ -381,8 +414,6 @@ li::marker {
 
 
 <p>The <code class="kw" translate="no">digits</code> value seeks out digits within a string and makes them horizontal while leaving the surrounding text vertical. (The syntax shown should work for any 2-digit number. If you ever need to go higher than that, just use <code class="kw" translate="no">digits 4</code> to allow for numbers up to 9,999.)</p>
-
-<p>Unfortunately, this is only a theoretical solution for the time being, because no browser yet supports the <code class="kw" translate="no">digits</code> value.</p>
 </section>
 
 
@@ -442,6 +473,7 @@ li::marker {
 <li>all animation and transition properties</li>
 </ol>
 </section>
+</section>
 
 
 
@@ -449,7 +481,7 @@ li::marker {
 
 
 <section id="layout">
-<h3>List layout</h3>
+<h2>List layout</h2>
 
 <p>The layout of the list items and the list box can be managed using CSS properties. Here we provide two illustrations.</p>
 
@@ -528,9 +560,9 @@ ol {
     }
 li {
     list-style-type: upright-parens;
-    text-indent: -2.4em hanging;
+    text-indent: -2.5em hanging;
     margin-inline-start: 3em;
-    padding-inline-start: .4em;
+    padding-inline-start: .5em;
   }
 li::marker {
   text-combine-upright: all;
@@ -556,6 +588,60 @@ li::marker {
  
  <p>This time we use a hanging text indent that is balanced using <code class="kw" translate="no">margin-inline-start</code> to produce the layout we want. A small amount inline padding separates the counter from the following text, and that has to be factored in to the <code class="kw" translate="no">text-indent</code> calculation.</p>
 </section>
+
+
+
+
+
+
+<section id="layout3">
+<h4>Example 3</h4>
+
+<p>In this illustration the list is indented by one em, and the counter by another em. The counter is followed by a one em gap. A significant difference here is that the counters themselves can grow in length, but they always start from the same position. (To illustrate what this looks like, we manually set the numbering for this example to show different lengths of counter.)</p>
+
+<p>This should work in all major browsers.<a href="qa-upright-counters-in-vertical-data/layout2.png" target="_blank"></a></p>
+
+
+<figure class="example" lang="ja">
+<pre><code class="language-css">
+@counter-style trad-chinese-informal-space {
+    system: extends trad-chinese-informal;
+    suffix: '\3001\3000';
+    }
+ol {
+    margin-inline-start: 1em;
+    }
+li {
+    list-style-type: trad-chinese-informal;
+    list-style-position: inside;
+    text-indent: 1em;
+    }
+</code></pre>
+</figure>
+
+
+<div id="out_spacing3" class="browser_output">
+<p class="browser_output_title">Output in your browser:</p>
+<div>
+<p>本文基於上述前提，主要將中文排版的特徵以下列方針解說。</p>
+<ol start="3">
+<li>不列舉中文排版的各項細節，主要處理與西文排版、日文排版需求有所不同之處。</li>
+</ol>
+<ol start="11">
+<li>詳細說明各個地區使用繁、簡中文排版規則間的差異與相同之處。</li>
+</ol>
+<ol start="22">
+<li>說明中文排版所表現的結果，以及將其結果視為問題，即中文排版之需求。同時提供處理原理或方式，但不提出具體處理技術。</li>
+</ol>
+<ol start="222">
+<li>針對目前中文排版上所遇到的不明確問題，試圖提出處理方法，或以列舉的方式提出說明。</li>
+</ol>
+<p>本文以書籍作為主要描述對象，但也包括雜誌、報紙等不同排版方式。</p>
+</div>
+</div>
+<p>The counters are based on the <code class="kw" translate="no">trad-chinese-informal</code> style, which uses one or more ideographic characters, followed by an ideographic comma, and which is supported by the browser without the need for an <code class="kw" translate="no">@charset</code> declaration. Since these are ideographic characters, we don't need to use <code class="kw" translate="no">text-combine-upright</code> to keep them upright. To support the growth of the counter without changing the start position, we set <code class="kw" translate="no">list-style-position</code>  to <code class="kw" translate="no">inside</code>. </p>
+
+<p>So far, so good, but adding a gap after the counter is a little more tricky. Because <code class="kw" translate="no">li::marker</code> doesn't support margins or padding, we need to use a workaround that extends the counter style, adding an ideographic space to the counter suffix.</p>
 </section>
 </section>
 
