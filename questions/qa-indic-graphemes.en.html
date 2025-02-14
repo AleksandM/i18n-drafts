@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>Typographic character units in complex scripts</title>
-<meta name="description" content="Issues related to segmentation of text into typographic character units." />
+<meta name="description" content="Issues related to segmentation of text into typographic character units.">
 <script>
 var f = { }
 
@@ -37,8 +37,8 @@ f.additionalLinks = ''
 <!--TRANSLATORS must change -en in the line just above to the subtag for their language! -->
 <script src="../javascript/doc-structure/article-2022.js"> </script>
 <script src="../javascript/articletoc-2022.js"></script>
-<link rel="stylesheet" href="../style/article-2022.css" />
-<link rel="stylesheet" href="qa-indic-graphemes-data/local.css" />
+<link rel="stylesheet" href="../style/article-2022.css">
+<link rel="stylesheet" href="qa-indic-graphemes-data/local.css">
 <link rel="copyright" href="#copyright"/>
 </head>
 
@@ -207,7 +207,7 @@ f.additionalLinks = ''
 </section>
 
 <section id="partorder">
-<h3>Grapheme clusters don't span conjuncts</h3>
+<h3>Grapheme clusters need to span conjuncts</h3>
 <p>The figure just below shows how the Bengali word 'jhilli' is split into its two orthographic syllables, 'ji' and 'lli'. The second orthographic syllable is a conjunct, representing a doubled 'l' sound followed by the sound 'i'.</p>
 
 <div class="figWrap">
@@ -217,23 +217,28 @@ f.additionalLinks = ''
 </figure>
 </div>
 
-<p>The code points in that conjunct are:</p>
+<p>The code points in that word are shown in <a class="figref">fig_jhilli_codepoints</a>, with dotted lines to indicate where grapheme cluster boundaries fell before Unicode version 15.1:</p>
 
 <div class="figWrap">
 <figure id="fig_jhilli_codepoints">
-<img src="qa-indic-graphemes-data/jhilli_codepoints.png" alt="">
-<figcaption>Code points that make up the Bengali word 'jhilli'. The horizontal line shows the boundary between the two grapheme clusters.</figcaption>
+<img src="qa-indic-graphemes-data/jhilli_codepoints.png" alt="A vertical list of the 6 code points that make up the word 'jhilli', where a green line appears after the first two codepoint (for 'jhi'), and a red line occurs between the following 'l+virama' and 'li'.">
+<figcaption>Code points that make up the Bengali word 'jhilli'.</figcaption>
 </figure>
 </div>
 
-<p>As you can see, the conjunct, which must not be split, involves more than one grapheme cluster, because as soon as a sequence of characters composing a grapheme cluster meets another base character it terminates.</p>
-<p>This means that <mark>for scripts of this type, additional tailoring rules need to be applied, over and above grapheme cluster segmentation</mark>, in order to identify appropriate text boundaries. In this case, that means treating the whole orthographic syllable as a unit.</p>
+<p>The green (upper) line separates two orthographic syllables; but the second orthographic syllable (the conjunct) was also divided into two grapheme clusters at the red (lower) line (ie. after the virama). This is inappropriate, since the conjunct should not be split.</p>
+
+<p>Unicode version 15.1 introduced some new rules, on a per script basis, to address this problem.  Grapheme clusters were extended so that they are not terminated by a virama for Bengali, Devanagari, Gujarati, Oriya, Telugu, and Malayalam. However, the problem remains for several other scripts.</p>
+
+<!--<p>As you can see, the conjunct, which must not be split, involves more than one grapheme cluster, because as soon as a sequence of characters composing a grapheme cluster meets another base character it terminates.</p>-->
+
+<p>This means that <mark>for scripts of this type that are still waiting for the new grapheme cluster rules to be added to the Unicode Standard, additional tailoring rules needed to be applied, over and above the default grapheme cluster segmentation</mark>, in order to identify appropriate text boundaries, ie. treating the whole orthographic syllable as a unit.</p>
 </section>
 
 <section id="multiplefamily">
 <h3>Font-dependent segmentation</h3>
 <p>Some applications successfully apply tailoring rules to treat conjunct clusters as unbreakable units, providing a way to address the problem just mentioned. There is, however, an additional problem which is somewhat less tractable.</p>
-<p>In a nutshell, <mark>if the vowel-killer is hidden <abbr title="Consonant+vowel_killer+Consonant+Vowel_sign">CvCV</abbr> should be treated as an unbreakable unit, and if the vowel-killer is visible it should be treated as two separate segments (<abbr title="Consonant+vowel_killer">Cv</abbr> and <abbr title="Consonant+Vowel_sign">CV</abbr>)</mark>.</p>
+<p>In a nutshell, <mark>if the vowel-killer is hidden, <abbr title="Consonant+vowel_killer+Consonant+Vowel_sign">CvCV</abbr> should be treated as an unbreakable unit, and if the vowel-killer is visible it should be treated as two separate segments (<abbr title="Consonant+vowel_killer">Cv</abbr> and <abbr title="Consonant+Vowel_sign">CV</abbr>)</mark>.</p>
 
 <p>What's problematic about this is that 
 <mark>there is no difference whatsoever in the underlying code point sequence, and yet the segmentation behaviour has to be different. The only clue as to how to segment this sequence comes in the visually rendered shapes</mark>
@@ -247,7 +252,7 @@ The Unicode Standard recognises 3 types of vowel-killer. <a href="https://util.u
 </div>
 
 <p>But the problem is wider than  this. It is possible that, for the exact same sequence of characters, one font has the glyphs needed for a particular conjunct, but another doesn't. In the latter case, the font will generally show the vowel-killer explicitly to indicate the absence of the intervening vowel.</p>
-<p>Here, for example, is a rendering of the previous Bengali word without the conjunct formation.</p>
+<p>Here, for example, is a rendering of the Bengali word in <a class="figref">fig_jhilli_codepoints</a> without the conjunct formation.</p>
 
 <div class="figWrap">
 <figure id="fig_jhilli_virama">
@@ -256,8 +261,10 @@ The Unicode Standard recognises 3 types of vowel-killer. <a href="https://util.u
 </figure>
 </div>
 
-<p>Note, in particular, that the prescript vowel sign ('i') now appears between the two 'l' letters. It doesn't appear to the left of the whole cluster any more. A crucial difference between this and what we saw before is that we now have three segments in the word: 'jhi' + 'l' + 'li', and text can be split at any of these grapheme cluster boundaries. </p>
-<p>However, because it is impossible to tell the difference between the two different rendered outcomes by looking at the code points, unless some way is found to detect the shape of the actual rendered text it is not possible to always apply the correct segmentation in the face of such variations.</p>
+<p>Note, in particular, that the prescript vowel sign ('i') now appears between the two 'l' letters. It doesn't appear to the left of the whole cluster any more. A crucial difference between this and what we saw before is that we now have three segments in the word: 'jhi' + 'l' + 'li', and text can be split at any of these grapheme cluster boundaries.</p>
+
+<p>However, because it is impossible to tell the difference between the two different rendered outcomes by looking at the code points, unless some way is found to detect the shape of the actual rendered text it is not possible to always apply the correct segmentation in the face of such variations. The new grapheme cluster rules for Bengali grapheme clusters will keep the sequence 'lli' together, as a single segment, whereas the previous rules would have actually created the split we need here. On balance, however, keeping this sequence together is likely to be less problematic than splitting conjuncts apart when the virama is invisible.</p>
+<p>If an author wants to force the virama to be visible, they can follow it with a zero-width non-joiner format character. That will then result in the three segments for the word 'jhilli' seen in <a class="figref">fig_jhilli_virama</a>, when split into grapheme clusters.</p>
 </section>
 </section>
 
@@ -289,7 +296,7 @@ The Unicode Standard recognises 3 types of vowel-killer. <a href="https://util.u
 
 <p>Apart from the extra work required to recompose the vowel-signs, notice that the space is now inserted between two combining marks, ie. the first item is a grapheme cluster but the second is a code point.</p>
 <p>Tamil and other writing systems take this a step further, particularly in relation to text justification and letter-spacing. </p>
-<p>Tamil has many very long words, and in Tamil news columns it may not be possible to fit more than a single word on a line. In such cases it is common to stretch the word to fit the whole width of the line. To do so, equal space is added between each non-connected glyph across the line, regardless of whether a glyph is a grapheme cluster, or even a single code point.</p>
+<p>Tamil has many very long words, and in Tamil news columns it may not be possible to fit more than a single word on a line. In such cases it is common to, again, stretch the word to fit the whole width of the line. However, to do so, equal space is added between each non-connected glyph across the line, regardless of whether a glyph is a grapheme cluster, or even a single code point.</p>
 
 <div class="figWrap">
 <figure id="fig_justification_full_stop">
@@ -307,7 +314,7 @@ The Unicode Standard recognises 3 types of vowel-killer. <a href="https://util.u
 </figure>
 </div>
 
-<p>In the figure just above, the last grapheme cluster (on the right) is kept intact, because the vowel-sign is joined to the base consonant.</p>
+<p>In <a class="figref">fig_partridge</a>, the last grapheme cluster (on the right) is kept intact, because the vowel-sign is joined to the base consonant.</p>
 <p>To its immediate left, the base character and combining mark that make up the middle syllable have been split apart, so the units are codepoints rather than grapheme clusters.</p>
 <p>
 <mark>The decision as to which sequences of base character plus combining character constitute typographic units, in this case, depends on how the glyphs will be rendered.</mark>
@@ -332,7 +339,13 @@ The Unicode Standard recognises 3 types of vowel-killer. <a href="https://util.u
 <li>
 <p><cite>Developing specifications</cite></p>
 <ul>
-<li><a href="https://www.w3.org/International/techniques/developing-specs.en?open=operations&open=char_indexing#char_indexing">Choosing text units for segmentation, indexing, etc.</a></li>
+<li><a href="https://www.w3.org/TR/international-specs/#char_indexing">Choosing text units for segmentation, indexing, etc.</a></li>
+</ul>
+</li>
+<li>
+<p><cite>Language enablement index</cite></p>
+<ul>
+<li><a href="https://www.w3.org/TR/typography/#segmentation">Grapheme/word segmentation &amp; selection</a></li>
 </ul>
 </li>
 </ul>
